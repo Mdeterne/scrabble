@@ -1,7 +1,9 @@
 package scrabble.application;
 
 import scrabble.modele.Plateau;
+import scrabble.modele.Points;
 import scrabble.modele.Jeton;
+import scrabble.modele.Lettre;
 import scrabble.modele.SacJeton;
 import scrabble.utils.SacVideException;
 import scrabble.gui.Console;
