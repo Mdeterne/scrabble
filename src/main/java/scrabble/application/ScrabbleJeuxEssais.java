@@ -6,6 +6,7 @@ import scrabble.modele.SacJeton;
 import scrabble.utils.SacVideException;
 import scrabble.gui.Console;
 import scrabble.modele.Chevalet;
+
 public class ScrabbleJeuxEssais {
 
 	public static void main(String[] args) {
