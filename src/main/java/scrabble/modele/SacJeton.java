@@ -1,8 +1,8 @@
 package scrabble.modele;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import scrabble.utils.SacVideException;
@@ -18,7 +18,7 @@ public class SacJeton {
     }
 	
 	private static void mettreDesJetonDansMonSac() {
-		/*for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 15; i++) {
 				sacJeton.add(new Jeton(Lettre.E, Points.UN));
 		}
 		for (int i = 0; i < 9; i++) {
@@ -51,14 +51,14 @@ public class SacJeton {
 			sacJeton.add(new Jeton(Lettre.H, Points.QUATRE));
 			sacJeton.add(new Jeton(Lettre.V, Points.QUATRE));
 			sacJeton.add(new Jeton(Lettre.JOKER, Points.ZERO));
-		}*/
+		}
 		for (int i = 0; i < 1; i++) {
-			//sacJeton.add(new Jeton(Lettre.J, Points.HUIT));
-			//sacJeton.add(new Jeton(Lettre.Q, Points.HUIT));
-			//sacJeton.add(new Jeton(Lettre.K, Points.DIX));
-			//sacJeton.add(new Jeton(Lettre.W, Points.DIX));
-			//sacJeton.add(new Jeton(Lettre.X, Points.DIX));
-			//sacJeton.add(new Jeton(Lettre.Y, Points.DIX));
+			sacJeton.add(new Jeton(Lettre.J, Points.HUIT));
+			sacJeton.add(new Jeton(Lettre.Q, Points.HUIT));
+			sacJeton.add(new Jeton(Lettre.K, Points.DIX));
+			sacJeton.add(new Jeton(Lettre.W, Points.DIX));
+			sacJeton.add(new Jeton(Lettre.X, Points.DIX));
+			sacJeton.add(new Jeton(Lettre.Y, Points.DIX));
 			sacJeton.add(new Jeton(Lettre.Z, Points.DIX));
 		}
 	}
@@ -74,5 +74,11 @@ public class SacJeton {
 		Random rand = new Random();
         return sacJeton.remove(rand.nextInt(sacJeton.size()));
     }
+	
+	public void afficherMonSacDeJeton() {
+		for (int i = 0 ; i < sacJeton.size() ; i++) {
+			System.out.println(sacJeton.toString());
+		}
+	}
 	
 }
