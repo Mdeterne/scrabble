@@ -24,4 +24,9 @@ public class Jeton {
     public void setPoints(Points points) {
         this.points = points;
     }
+    
+    public String toSting() {
+    	return this.lettre + " " + this.points;
+    }
+    
 }
