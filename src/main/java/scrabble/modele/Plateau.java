@@ -1,8 +1,5 @@
 package scrabble.modele;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import scrabble.gui.*;
 
 public class Plateau {
@@ -15,31 +12,22 @@ public class Plateau {
 
 	
 	public Case[][] mettreDesCaseDansMonPlateau() {
-		int i =0;
-		int j;
-		while (i<15) {
-			j=0;
-			while (j<15) {
+		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
+			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
 				cases[i][j] = new Case(Specialite.NEUTRE);
-				j++;
 			}
-			i++;
 		}
+		
 		cases[7][7].setSpecialite(Specialite.ETOILE);
 		return cases;
 	}
 	
 	public void faireAfficherMesCases() {
-		int i =0;
-		int j;
-		while (i<15) {
-			j=0;
-			while (j<15) {
+		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
+			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
 				System.out.println("("+i+","+j+")");
 				Console.message(this.cases[i][j].toString());
-				j++;
 			}
-			i++;
 		}
 	}
 }
