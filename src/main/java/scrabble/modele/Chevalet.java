@@ -2,6 +2,7 @@ package scrabble.modele;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import scrabble.gui.Console;
 import scrabble.utils.SacVideException;
@@ -48,9 +49,25 @@ public class Chevalet {
 			}
 			chevalet.add(jeton);
 		}
-		
-		
 	}
 
+	
+	public void echangeLettre(int i, Jeton jeton) {
+		if(chevalet.size()<i || i>=7) {
+			Console.message("Vous ne pouvez pas procéder à l'échange.");
+		}
+		else {
+			for(int j=0;j>i;j++) {
+				Scanner input = new Scanner(System.in);
+				Console.message("Quelle jeton souhaitait vous enlevez: ");
+		        String jetonEchanger = input.next();
+				chevalet.remove(jetonEchanger);
+				SacJeton.add(jetonEchanger);
+			}
+			for(int j=0;j>i;j++) {
+				chevalet.add(jeton);
+			}
+		}
+	}
 	
 }
