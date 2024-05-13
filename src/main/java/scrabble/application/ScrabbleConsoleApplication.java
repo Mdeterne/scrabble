@@ -8,12 +8,7 @@ public class ScrabbleConsoleApplication {
 
 	public static void main(String[] args) {
 		Plateau plateau = new Plateau();
-		plateau.mettreDesCaseDansMonPlateau();
-		plateau.faireAfficherMesCases();
-		Console.message("");
-		
-		Chevalet chevalet = new Chevalet();
-		chevalet.afficher();
+		System.out.println(plateau);
 	}
 
 }
