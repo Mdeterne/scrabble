@@ -13,13 +13,9 @@ public class Chevalet {
 		this.jetonsJouables = new ArrayList<Jeton>();
 	}
 	
-	public void piocher() {
-		try {
-			this.jetonsJouables.add(SacJeton.piocherJeton());
-		} catch (SacVideException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void ajouter(Jeton jeton) {
+		
+		this.jetonsJouables.add(jeton);
 	}
 	
 	void jouer(Jeton jeton, Position position){
