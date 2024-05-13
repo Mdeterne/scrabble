@@ -24,20 +24,18 @@ public class ScrabbleJeuxEssais {
 		
 		sacJeton.afficherMonSacDeJeton();
 		
+		Chevalet chevalet;
+		chevalet = new Chevalet();
 		
-		
+		chevalet.remplirMonChevalet(sacJeton);		
 		Console.message("");
 		
 		Jeton jetonPioche = null;
 		try {
-			jetonPioche = SacJeton.piocherJeton();
+			jetonPioche = sacJeton.piocherJeton();
 		} catch (SacVideException e) {
 			Console.message("Impossible de piocher le sac est vide");
 		}
-		
-        
-		Chevalet chevalet;
-		chevalet = new Chevalet();
 		
 		
 		chevalet.afficher();

@@ -8,7 +8,7 @@ import scrabble.utils.SacVideException;
 
 public class SacJeton {
 	
-	public static ArrayList<Jeton> sacJeton;
+	public ArrayList<Jeton> sacJeton;
 
 	public SacJeton(){
         sacJeton = new ArrayList<>();
@@ -60,11 +60,11 @@ public class SacJeton {
 		}
 	}
 	
-	public static void melangerSac() {
+	public void melangerSac() {
 		Collections.shuffle(sacJeton);
 	}
 	
-	public static Jeton piocherJeton() throws SacVideException{
+	public Jeton piocherJeton() throws SacVideException{
         if (sacJeton.isEmpty()) {
         	throw new SacVideException("Le sac est vide impossible de piocher");
         }

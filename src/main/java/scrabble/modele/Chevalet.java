@@ -7,15 +7,20 @@ import scrabble.gui.Console;
 import scrabble.utils.SacVideException;
 
 public class Chevalet {
-	ArrayList<Jeton> jetonsJouables; 
+	ArrayList<Jeton> chevalet; 
 	
 	public Chevalet(){
-		this.jetonsJouables = new ArrayList<Jeton>();
+		this.chevalet = new ArrayList<Jeton>();
 	}
 	
 	public void ajouter(Jeton jeton) {
 		
-		this.jetonsJouables.add(jeton);
+		if (chevalet.size() < 7) {
+			this.chevalet.add(jeton);
+		}
+		else {
+			Console.message("impposible votre chevalet est plein");
+		}
 	}
 	
 	void jouer(Jeton jeton, Position position){
@@ -23,14 +28,28 @@ public class Chevalet {
 	}
 	
 	public void afficher() {
-	    if (jetonsJouables.isEmpty()) {
+	    if (chevalet.isEmpty()) {
 	        Console.message("Le chevalet est vide."); // Affiche un message si le chevalet est vide
 	    } else {
 	        Console.message("Jetons sur le chevalet :");
-	        for (Jeton jeton : jetonsJouables) {
+	        for (Jeton jeton : chevalet) {
 	            Console.message("Lettre : " + jeton.getLettre() + ", Points : " + jeton.getPoints());
 	        }
 	    }
+	}
+	
+	public void remplirMonChevalet(SacJeton sacJeton) {
+		Jeton jeton = null;
+		for(int i = 0; i < Constantes.NBPLACECHEVALET; i++) {
+			try {
+				jeton = sacJeton.piocherJeton();
+			} catch (SacVideException e) {
+				Console.message("erreur sac de jeton vide");
+			}
+			chevalet.add(jeton);
+		}
+		
+		
 	}
 
 	
