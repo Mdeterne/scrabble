@@ -9,7 +9,7 @@ import scrabble.utils.SacVideException;
 
 public class SacJeton {
 	
-	public static List<Jeton> sacJeton;
+	public static ArrayList<Jeton> sacJeton;
 
 	static {
         sacJeton = new ArrayList<>();

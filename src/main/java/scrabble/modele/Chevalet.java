@@ -7,7 +7,7 @@ import scrabble.gui.Console;
 import scrabble.utils.SacVideException;
 
 public class Chevalet {
-	List<Jeton> jetonsJouables; 
+	ArrayList<Jeton> jetonsJouables; 
 	
 	public Chevalet(){
 		this.jetonsJouables = new ArrayList<Jeton>();
