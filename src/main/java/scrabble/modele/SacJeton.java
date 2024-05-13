@@ -2,7 +2,6 @@ package scrabble.modele;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 import scrabble.utils.SacVideException;
@@ -11,13 +10,11 @@ public class SacJeton {
 	
 	public static ArrayList<Jeton> sacJeton;
 
-	static {
+	public SacJeton(){
         sacJeton = new ArrayList<>();
-        mettreDesJetonDansMonSac();
-        melangerSac();
     }
 	
-	private static void mettreDesJetonDansMonSac() {
+	public void mettreDesJetonDansMonSac() {
 		for (int i = 0; i < 15; i++) {
 				sacJeton.add(new Jeton(Lettre.E, Points.UN));
 		}
