@@ -74,7 +74,7 @@ public class SacJeton {
 	
 	public void afficherMonSacDeJeton() {
 		for (int i = 0 ; i < sacJeton.size() ; i++) {
-			System.out.println(sacJeton.toString());
+			System.out.print(sacJeton.get(i).toSting()+", ");
 		}
 	}
 	

@@ -1,9 +1,7 @@
 package scrabble.application;
 
 import scrabble.modele.Plateau;
-import scrabble.modele.Points;
 import scrabble.modele.Jeton;
-import scrabble.modele.Lettre;
 import scrabble.modele.SacJeton;
 import scrabble.utils.SacVideException;
 import scrabble.gui.Console;
@@ -20,18 +18,19 @@ public class ScrabbleJeuxEssais {
 		
 		plateau.faireAfficherMesCases();
 		
+		SacJeton sacJeton = new SacJeton();
+		
+		sacJeton.mettreDesJetonDansMonSac();
+		
+		sacJeton.afficherMonSacDeJeton();
+		
+		
+		
 		Console.message("");
 		
-		Jeton jetonPioche;
+		Jeton jetonPioche = null;
 		try {
 			jetonPioche = SacJeton.piocherJeton();
-		} catch (SacVideException e) {
-			Console.message("Impossible de piocher le sac est vide");
-		}
-        
-		Jeton jetonPioche2;
-		try {
-			jetonPioche2 = SacJeton.piocherJeton();
 		} catch (SacVideException e) {
 			Console.message("Impossible de piocher le sac est vide");
 		}
@@ -40,13 +39,11 @@ public class ScrabbleJeuxEssais {
 		Chevalet chevalet;
 		chevalet = new Chevalet();
 		
-		Jeton jeton1 = new Jeton(Lettre.A, Points.DEUX);
-		Jeton jeton2 = new Jeton(Lettre.B, Points.TROIS);
-		//chevalet.ajouter(jeton1);
-		//chevalet.ajouter(jeton2);
+		
 		chevalet.afficher();
-		chevalet.piocher();
+		chevalet.ajouter(jetonPioche);
 		chevalet.afficher();
 		
+		sacJeton.afficherMonSacDeJeton();
 	}
 }

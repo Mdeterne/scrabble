@@ -2,11 +2,11 @@ package scrabble.modele;
 
 public class Jeton {
     private Lettre lettre;
-    private Points points;
+    private int points;
 
     public Jeton(Lettre lettre, Points points){
     	this.lettre=lettre;
-    	this.points=points;
+    	this.points= points.getValeur();
     }
     
     public Lettre getLettre() {
@@ -17,12 +17,12 @@ public class Jeton {
         this.lettre = lettre;
     }
 
-    public Points getPoints() {
+    public int getPoints() {
         return points;
     }
 
     public void setPoints(Points points) {
-        this.points = points;
+        this.points = points.getValeur();
     }
     
     public String toSting() {

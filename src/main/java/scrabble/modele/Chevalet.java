@@ -28,7 +28,7 @@ public class Chevalet {
 	    } else {
 	        Console.message("Jetons sur le chevalet :");
 	        for (Jeton jeton : jetonsJouables) {
-	            Console.message("Lettre : " + jeton.getLettre() + ", Points : " + jeton.getPoints().getValeur());
+	            Console.message("Lettre : " + jeton.getLettre() + ", Points : " + jeton.getPoints());
 	        }
 	    }
 	}
