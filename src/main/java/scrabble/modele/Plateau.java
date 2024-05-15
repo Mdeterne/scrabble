@@ -36,5 +36,20 @@ public class Plateau {
 			}
 		}
 	}
+	
+	public boolean estVide() {
+		boolean estVide = false;
+		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
+			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
+				if (cases[i][j] instanceof Case) {
+					estVide = false;
+				}
+				else {
+					estVide = true;
+				}
+			}
+		}
+		return estVide;
+	}
 }
 

@@ -29,7 +29,7 @@ class ChevaletTest {
 		SacJeton sacJeton = new SacJeton();
 		chevalet.remplirMonChevalet(sacJeton);
 		
-		if (chevalet.taille()==7) {
+		if (chevalet.nbJeton()==7) {
 			assertTrue(true);
 		}
 	}

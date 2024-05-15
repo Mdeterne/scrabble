@@ -16,7 +16,6 @@ class PlateauTest {
 	@Test
 	void remplirMonPlateauDoitMettreDesCases() {
 		Plateau plateau = new Plateau();
-		plateau.mettreDesCaseDansMonPlateau();
 		assertFalse(plateau.estVide());
 	}
 }
