@@ -2,13 +2,15 @@ package scrabble.modele;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
+import scrabble.gui.Console;
 import scrabble.utils.SacVideException;
 
 public class SacJeton {
 	
-	public ArrayList<Jeton> sacJeton;
+	public List<Jeton> sacJeton;
 
 	public SacJeton(){
         sacJeton = new ArrayList<>();
@@ -74,8 +76,20 @@ public class SacJeton {
 	
 	public void afficherMonSacDeJeton() {
 		for (int i = 0 ; i < sacJeton.size() ; i++) {
-			System.out.print(sacJeton.get(i).toSting()+", ");
+			Console.message(sacJeton.get(i).toSting()+", ");
 		}
+	}
+	
+	public void afficherNombreJetons() {
+		Console.message("Il y a "+sacJeton.size()+" jetons dans le sac.");
+	}
+	
+	public boolean estVide() {
+		return sacJeton.isEmpty();	
+	}
+	
+	public int taille() {
+		return sacJeton.size();
 	}
 	
 }

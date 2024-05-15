@@ -9,10 +9,10 @@ import scrabble.gui.Console;
 import scrabble.utils.SacVideException;
 
 public class Chevalet {
-	ArrayList<Jeton> chevalet; 
+	public List<Jeton> chevalet; 
 	
 	public Chevalet(){
-		this.chevalet = new ArrayList<Jeton>();
+		this.chevalet = new ArrayList<>();
 	}
 	
 	public void ajouter(Jeton jeton) {
@@ -31,7 +31,7 @@ public class Chevalet {
 	
 	public void afficher() {
 	    if (chevalet.isEmpty()) {
-	        Console.message("Le chevalet est vide."); // Affiche un message si le chevalet est vide
+	        Console.message("Le chevalet est vide.");
 	    } else {
 	        Console.message("Jetons sur le chevalet :");
 	        for (Jeton jeton : chevalet) {
@@ -76,6 +76,10 @@ public class Chevalet {
 	
 	public boolean estVide() {
 		return chevalet.isEmpty();
+	}
+	
+	public int taille() {
+		return chevalet.size();
 	}
 	
 }
