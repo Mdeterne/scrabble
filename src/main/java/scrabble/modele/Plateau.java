@@ -4,7 +4,7 @@ import scrabble.gui.*;
 
 public class Plateau {
 
-	Case[][] cases;
+	private Case[][] cases;
 
 	public Plateau() {
 		this.cases = new Case[Constantes.LIGNE][Constantes.COLONNE];
@@ -29,6 +29,21 @@ public class Plateau {
 				Console.message(this.cases[i][j].toString());
 			}
 		}
+	}
+	
+	public boolean estVide() {
+		boolean estVide = false;
+		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
+			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
+				if (cases[i][j] instanceof Case) {
+					estVide = false;
+				}
+				else {
+					estVide = true;
+				}
+			}
+		}
+		return estVide;
 	}
 }
 

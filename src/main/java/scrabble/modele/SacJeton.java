@@ -84,4 +84,12 @@ public class SacJeton {
 		Console.message("Il y a "+sacJeton.size()+" jetons dans le sac.");
 	}
 	
+	public boolean estVide() {
+		return sacJeton.isEmpty();	
+	}
+	
+	public int taille() {
+		return sacJeton.size();
+	}
+	
 }

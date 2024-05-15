@@ -70,4 +70,8 @@ public class Chevalet {
 		}
 	}
 	
+	public boolean estVide() {
+		return chevalet.isEmpty();
+	}
+	
 }
