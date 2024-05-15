@@ -8,11 +8,11 @@ public class Plateau {
 
 	public Plateau() {
 		this.cases = new Case[Constantes.LIGNE][Constantes.COLONNE];
-		mettreDesCaseDansMonPlateau();
+		remplirMonPlateau();
 	}
 
 	
-	private Case[][] mettreDesCaseDansMonPlateau() {
+	private Case[][] remplirMonPlateau() {
 		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
 			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
 				cases[i][j] = new Case(Specialite.NEUTRE);
