@@ -13,6 +13,7 @@ public class ScrabbleJeuxEssais {
 		Console.titre("Bienvenue dans notre magnifique scrabble");
 		
 		Plateau plateau = new Plateau();
+		plateau.faireAfficherMesCases();
 		plateau.mettreDesCaseDansMonPlateau();
 		plateau.faireAfficherMesCases();
 		
