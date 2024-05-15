@@ -8,10 +8,11 @@ public class Plateau {
 
 	public Plateau() {
 		this.cases = new Case[Constantes.LIGNE][Constantes.COLONNE];
+		mettreDesCaseDansMonPlateau();
 	}
 
 	
-	public Case[][] mettreDesCaseDansMonPlateau() {
+	private Case[][] mettreDesCaseDansMonPlateau() {
 		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
 			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
 				cases[i][j] = new Case(Specialite.NEUTRE);
@@ -22,7 +23,7 @@ public class Plateau {
 		return cases;
 	}
 	
-	public void faireAfficherMesCases() {
+	public void Afficher() {
 		if (cases[0][0]==null) {
 			Console.message("Le plateau est vide.");
 		}
@@ -34,21 +35,6 @@ public class Plateau {
 				}
 			}
 		}
-	}
-	
-	public boolean estVide() {
-		boolean estVide = false;
-		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
-			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
-				if (cases[i][j] instanceof Case) {
-					estVide = false;
-				}
-				else {
-					estVide = true;
-				}
-			}
-		}
-		return estVide;
 	}
 }
 
