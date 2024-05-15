@@ -19,7 +19,7 @@ public class ScrabbleJeuxEssais {
 		SacJeton sacJeton = new SacJeton();
 		sacJeton.mettreDesJetonDansMonSac();
 		sacJeton.afficherNombreJetons();
-		sacJeton.afficherMonSacDeJeton();
+		sacJeton.afficher();
 		
 		Chevalet chevalet;
 		chevalet = new Chevalet();
@@ -38,6 +38,6 @@ public class ScrabbleJeuxEssais {
 		chevalet.afficher();
 		chevalet.ajouter(jetonPioche);
 		sacJeton.afficherNombreJetons();
-		sacJeton.afficherMonSacDeJeton();
+		sacJeton.afficher();
 	}
 }
