@@ -13,20 +13,18 @@ public class ScrabbleJeuxEssais {
 		Console.titre("Bienvenue dans notre magnifique scrabble");
 		
 		Plateau plateau = new Plateau();
-		
 		plateau.mettreDesCaseDansMonPlateau();
-		
 		plateau.faireAfficherMesCases();
 		
 		SacJeton sacJeton = new SacJeton();
-		
 		sacJeton.mettreDesJetonDansMonSac();
-		
+		sacJeton.afficherNombreJetons();
 		sacJeton.afficherMonSacDeJeton();
 		
 		Chevalet chevalet;
 		chevalet = new Chevalet();
-		
+		Console.message("test");
+		chevalet.afficher();
 		chevalet.remplirMonChevalet(sacJeton);		
 		Console.message("");
 		
@@ -37,11 +35,9 @@ public class ScrabbleJeuxEssais {
 			Console.message("Impossible de piocher le sac est vide");
 		}
 		
-		
 		chevalet.afficher();
 		chevalet.ajouter(jetonPioche);
-		chevalet.afficher();
-		
+		sacJeton.afficherNombreJetons();
 		sacJeton.afficherMonSacDeJeton();
 	}
 }
