@@ -13,12 +13,12 @@ public class Case {
 		this.specialite = specialite;
 	}
 
-	public Boolean getPrésenceJeton() {
+	public Boolean getPresenceJeton() {
 		return presenceJeton;
 	}
 
-	public void setPresenceJeton(Boolean présenceJeton) {
-		this.presenceJeton = présenceJeton;
+	public void setPresenceJeton(Boolean presenceJeton) {
+		this.presenceJeton = presenceJeton;
 	}
 
 	public Case(Specialite specialite) {
