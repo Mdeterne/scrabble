@@ -53,24 +53,20 @@ public class Chevalet {
 	}
 
 	
-	public void echangeLettre(int i, SacJeton sacJeton) throws SacVideException {
-		if(jetons.size()<i || i>7) {
-			Console.message("Vous ne pouvez pas procéder à l'échange.");
-		}
-		else {
-			for(int j=0;j<i;j++) {
-				Scanner input = new Scanner(System.in);
-				Console.message("Quelle est la position du jeton que vous souhaitez enlever: ");
-		        String jetonEchanger = input.next();
-		        int foo = Integer.parseInt(jetonEchanger);
-		        Jeton indice = jetons.get(foo);
-				jetons.remove(indice);
-				((Collection<Jeton>) sacJeton).add(indice);
+	public void echangerTousLesJetons(SacJeton sacJeton){
+		try {
+			int nombreJeton=jetons.size()-1;
+			for(int j=0;j<nombreJeton;j++) {
+				Jeton jetonCible=jetons.get(0);
+				sacJeton.ajouterUnJeton(jetonCible);
+				jetons.remove(jetonCible);
 			}
 			sacJeton.melangerSac();
-			for(int k=0;k<i;k++) {
+			for(int k=0;k<nombreJeton;k++) {
 				jetons.add(sacJeton.piocherJeton());
 			}
+		}catch (SacVideException e){
+			Console.message("Impossible de piocher le sac est vide");
 		}
 	}
 	

@@ -88,4 +88,8 @@ public class SacJeton {
 		return jetons.size();
 	}
 	
+	public void ajouterUnJeton(Jeton jeton) {
+		jetons.add(jeton);
+	}
+	
 }

@@ -18,7 +18,7 @@ public class ScrabbleJeuxEssais {
 		
 		SacJeton sacJeton = new SacJeton();
 		sacJeton.mettreDesJetonDansMonSac();
-		sacJeton.afficherNombreJetons();
+		sacJeton.nbJeton();
 		sacJeton.afficher();
 		
 		Chevalet chevalet;
@@ -37,7 +37,12 @@ public class ScrabbleJeuxEssais {
 		
 		chevalet.afficher();
 		chevalet.ajouter(jetonPioche);
-		sacJeton.afficherNombreJetons();
+		sacJeton.nbJeton();
 		sacJeton.afficher();
+		
+		chevalet.afficher();
+		chevalet.echangerTousLesJetons(sacJeton);
+		chevalet.afficher();
+		
 	}
 }
