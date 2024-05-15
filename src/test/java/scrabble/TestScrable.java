@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import scrabble.modele.Chevalet;
 import scrabble.modele.Plateau;
+import scrabble.modele.SacJeton;
 
 class TestScrable {
 	
@@ -28,4 +29,12 @@ class TestScrable {
 		Chevalet chevalet = new Chevalet();
 		assertTrue(chevalet.estVide());
 	}
+	
+	@Test
+	void nouveauSacJetonDoitEtreVide() {
+		SacJeton sacJeton = new SacJeton();
+		assertTrue(sacJeton.estVide());
+	}
+	
+	
 }
