@@ -21,25 +21,28 @@ class SacJetonsTest {
 		SacJeton sacJeton = new SacJeton();
 		sacJeton.mettreDesJetonDansMonSac();
 		Jeton jeton = null;
-		int nbJetonsApresPioche = sacJeton.taille()-1;
+		int nbJetonsApresPioche = sacJeton.nbJeton()-1;
 		
 		try {
 			jeton = sacJeton.piocherJeton();
 		} catch (SacVideException e) {
 			Console.message("le sac de jeton est vide");
 		}
-		assertEquals(nbJetonsApresPioche,sacJeton.taille());
+		assertEquals(nbJetonsApresPioche,sacJeton.nbJeton());
 	}
 	
 	@Test
-	void piocherAlorsQueLeSacEstVide() throws SacVideException  {
-		
+	void piocherAlorsQueLeSacEstVide() {
 		SacJeton sacJeton = new SacJeton();
-		if (sacJeton.estVide())
-			throw new SacVideException("Le sac est vide, impossible de piocher.");
 		Jeton jeton = null;
 		boolean exception = false;
-		jeton = sacJeton.piocherJeton();
+		
+		try {
+			jeton = sacJeton.piocherJeton();
+		} catch (SacVideException e) {
+			Console.message("le sac de jeton est vide");
+			exception = true;
+		}
 		
 		assertTrue(exception);
 	}
