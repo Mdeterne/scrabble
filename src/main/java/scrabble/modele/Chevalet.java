@@ -74,4 +74,8 @@ public class Chevalet {
 		return chevalet.isEmpty();
 	}
 	
+	public int taille() {
+		return chevalet.size();
+	}
+	
 }
