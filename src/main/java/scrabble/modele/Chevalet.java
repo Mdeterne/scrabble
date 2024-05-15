@@ -9,16 +9,16 @@ import scrabble.gui.Console;
 import scrabble.utils.SacVideException;
 
 public class Chevalet {
-	public List<Jeton> chevalet; 
+	public List<Jeton> jetons; 
 	
 	public Chevalet(){
-		this.chevalet = new ArrayList<>();
+		this.jetons = new ArrayList<>();
 	}
 	
 	public void ajouter(Jeton jeton) {
 		
-		if (chevalet.size() < 7) {
-			this.chevalet.add(jeton);
+		if (jetons.size() < Constantes.NBPLACECHEVALET) {
+			this.jetons.add(jeton);
 		}
 		else {
 			Console.message("impposible votre chevalet est plein");
@@ -30,11 +30,11 @@ public class Chevalet {
 	}
 	
 	public void afficher() {
-	    if (chevalet.isEmpty()) {
+	    if (jetons.isEmpty()) {
 	        Console.message("Le chevalet est vide.");
 	    } else {
 	        Console.message("Jetons sur le chevalet :");
-	        for (Jeton jeton : chevalet) {
+	        for (Jeton jeton : jetons) {
 	            Console.message("Lettre : " + jeton.getLettre() + ", Points : " + jeton.getPoints());
 	        }
 	    }
@@ -48,38 +48,34 @@ public class Chevalet {
 			} catch (SacVideException e) {
 				Console.message("erreur sac de jeton vide");
 			}
-			chevalet.add(jeton);
+			jetons.add(jeton);
 		}
 	}
 
 	
-	public void echangeLettre(int i, SacJeton sacJeton) throws SacVideException {
-		if(chevalet.size()<i || i>=7) {
-			Console.message("Vous ne pouvez pas procéder à l'échange.");
-		}
-		else {
-			for(int j=0;j<i;j++) {
-				Scanner input = new Scanner(System.in);
-				Console.message("Quelle est la position du jeton que vous souhaitez enlever: ");
-		        String jetonEchanger = input.next();
-		        int foo = Integer.parseInt(jetonEchanger);
-		        Jeton indice = chevalet.get(foo);
-				chevalet.remove(indice);
-				((Collection<Jeton>) sacJeton).add(indice);
+	public void echangerTousLesJetons(SacJeton sacJeton){
+		try {
+			int nombreJeton=jetons.size()-1;
+			for(int j=0;j<nombreJeton;j++) {
+				Jeton jetonCible=jetons.get(0);
+				sacJeton.ajouterUnJeton(jetonCible);
+				jetons.remove(jetonCible);
 			}
 			sacJeton.melangerSac();
-			for(int k=0;k<i;k++) {
-				chevalet.add(sacJeton.piocherJeton());
+			for(int k=0;k<nombreJeton;k++) {
+				jetons.add(sacJeton.piocherJeton());
 			}
+		}catch (SacVideException e){
+			Console.message("Impossible de piocher le sac est vide");
 		}
 	}
 	
 	public boolean estVide() {
-		return chevalet.isEmpty();
+		return jetons.isEmpty();
 	}
 	
-	public int taille() {
-		return chevalet.size();
+	public int nbJeton() {
+		return jetons.size();
 	}
 	
 }
