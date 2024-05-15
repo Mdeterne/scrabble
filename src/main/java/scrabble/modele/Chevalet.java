@@ -1,6 +1,7 @@
 package scrabble.modele;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,26 +53,33 @@ public class Chevalet {
 	}
 
 	
-	public void echangeLettre(int i, Jeton jeton) {
+	public void echangeLettre(int i, SacJeton sacJeton) throws SacVideException {
 		if(chevalet.size()<i || i>=7) {
 			Console.message("Vous ne pouvez pas procéder à l'échange.");
 		}
 		else {
-			for(int j=0;j>i;j++) {
+			for(int j=0;j<i;j++) {
 				Scanner input = new Scanner(System.in);
-				Console.message("Quelle jeton souhaitez-vous enlever? ");
+				Console.message("Quelle est la position du jeton que vous souhaitez enlever: ");
 		        String jetonEchanger = input.next();
-				chevalet.remove(jetonEchanger);
-				SacJeton.add(jetonEchanger);
+		        int foo = Integer.parseInt(jetonEchanger);
+		        Jeton indice = chevalet.get(foo);
+				chevalet.remove(indice);
+				((Collection<Jeton>) sacJeton).add(indice);
 			}
-			for(int j=0;j>i;j++) {
-				chevalet.add(jeton);
+			sacJeton.melangerSac();
+			for(int k=0;k<i;k++) {
+				chevalet.add(sacJeton.piocherJeton());
 			}
 		}
 	}
 	
 	public boolean estVide() {
 		return chevalet.isEmpty();
+	}
+	
+	public int taille() {
+		return chevalet.size();
 	}
 	
 }
