@@ -78,5 +78,15 @@ class TestScrable {
 		assertTrue(exception);
 	}
 	
+	@Test
+	void doitRemplirMonChevalet() {
+		Chevalet chevalet = new Chevalet();
+		SacJeton sacJeton = new SacJeton();
+		chevalet.remplirMonChevalet(sacJeton);
+		
+		if (chevalet.taille()==7) {
+			assertTrue(true);
+		}
+	}
 	
 }
