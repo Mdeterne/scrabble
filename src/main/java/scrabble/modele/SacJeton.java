@@ -70,8 +70,7 @@ public class SacJeton {
         if (jetons.isEmpty()) {
         	throw new SacVideException("Le sac est vide impossible de piocher");
         }
-		Random rand = new Random();
-        return jetons.remove(rand.nextInt(jetons.size()));
+        return jetons.remove(0);
     }
 	
 	public void afficher() {
