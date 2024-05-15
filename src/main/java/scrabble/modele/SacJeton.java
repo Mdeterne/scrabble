@@ -79,6 +79,11 @@ public class SacJeton {
 	}
 	
 	public boolean estVide() {
-		return sacJeton.isEmpty();	}
+		return sacJeton.isEmpty();	
+	}
+	
+	public int taille() {
+		return sacJeton.size();
+	}
 	
 }
