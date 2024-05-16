@@ -78,4 +78,8 @@ public class Chevalet {
 		return jetons.size();
 	}
 	
+	public void ajouterUneListeJeton(ArrayList<Jeton> jetonEchanger) {
+		jetons.addAll(jetonEchanger);
+	}
+	
 }
