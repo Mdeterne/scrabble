@@ -91,7 +91,7 @@ public class SacJeton {
 		jetons.add(jeton);
 	}
 	
-	public void ajouterUneListeJeton(ArrayList<Jeton> jetonEchanger) {
+	public void ajouterUneListeJeton(List<Jeton> jetonEchanger) {
 		jetons.addAll(jetonEchanger);
 	}
 	
