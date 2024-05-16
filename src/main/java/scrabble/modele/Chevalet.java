@@ -53,12 +53,12 @@ public class Chevalet {
 	}
 
 	
-	public void echangerTousLesJetons(SacJeton sacJeton){
+	public void echangerTousLesJetons(ArrayList<Jeton> sacJeton){
 		try {
 			int nombreJeton=jetons.size()-1;
 			for(int j=0;j<nombreJeton;j++) {
 				Jeton jetonCible=jetons.get(0);
-				sacJeton.ajouterUnJeton(jetonCible);
+				sacJeton.add(jetonCible);
 				jetons.remove(jetonCible);
 			}
 			sacJeton.melangerSac();
