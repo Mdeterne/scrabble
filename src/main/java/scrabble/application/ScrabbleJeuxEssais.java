@@ -4,8 +4,13 @@ import scrabble.modele.Plateau;
 import scrabble.modele.Jeton;
 import scrabble.modele.SacJeton;
 import scrabble.utils.SacVideException;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import scrabble.gui.Console;
 import scrabble.modele.Chevalet;
+import scrabble.modele.Constantes;
 
 public class ScrabbleJeuxEssais {
 
@@ -43,6 +48,21 @@ public class ScrabbleJeuxEssais {
 		chevalet.afficher();
 		chevalet.echangerTousLesJetons(sacJeton);
 		chevalet.afficher();
+		
+	}
+	
+	private void remplirChevalet(int nbJetonAEchanger, SacJeton sacJeton, Chevalet chevalet) throws SacVideException {
+		if (sacJeton.estVide()) {
+			throw new SacVideException("Le sac est vide impossible de piocher");
+		}
+		
+		List<Jeton>transition = new ArrayList<>();
+		for (int i=0; i<Constantes.NBPLACECHEVALET; i++) {
+			
+			transition.add(sacJeton.piocherJeton());
+			
+		}
+		
 		
 	}
 }
