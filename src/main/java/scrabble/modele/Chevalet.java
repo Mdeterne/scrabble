@@ -40,36 +40,6 @@ public class Chevalet {
 	    }
 	}
 	
-	public void remplirMonChevalet(SacJeton sacJeton) {
-		Jeton jeton = null;
-		for(int i = 0; i < Constantes.NBPLACECHEVALET; i++) {
-			try {
-				jeton = sacJeton.piocherJeton();
-			} catch (SacVideException e) {
-				Console.message("erreur sac de jeton vide");
-			}
-			jetons.add(jeton);
-		}
-	}
-
-	
-	public void echangerTousLesJetons(ArrayList<Jeton> sacJeton){
-		try {
-			int nombreJeton=jetons.size()-1;
-			for(int j=0;j<nombreJeton;j++) {
-				Jeton jetonCible=jetons.get(0);
-				sacJeton.add(jetonCible);
-				jetons.remove(jetonCible);
-			}
-			sacJeton.melangerSac();
-			for(int k=0;k<nombreJeton;k++) {
-				jetons.add(sacJeton.piocherJeton());
-			}
-		}catch (SacVideException e){
-			Console.message("Impossible de piocher le sac est vide");
-		}
-	}
-	
 	public boolean estVide() {
 		return jetons.isEmpty();
 	}
@@ -78,7 +48,7 @@ public class Chevalet {
 		return jetons.size();
 	}
 	
-	public void ajouterUneListeJeton(ArrayList<Jeton> jetonEchanger) {
+	public void ajouterUneListeJeton(List<Jeton> jetonEchanger) {
 		jetons.addAll(jetonEchanger);
 	}
 	
