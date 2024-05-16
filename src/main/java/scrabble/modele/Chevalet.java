@@ -52,4 +52,12 @@ public class Chevalet {
 		jetons.addAll(jetonEchanger);
 	}
 	
+	public Jeton selectionner(int indice) {
+		return jetons.get(indice);
+	}
+	
+	public void nettoyer() {
+		jetons.removeAll(jetons);
+	}
+	
 }
