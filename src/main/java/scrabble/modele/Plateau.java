@@ -4,7 +4,7 @@ import scrabble.gui.*;
 
 public class Plateau {
 
-	private Case[][] cases;
+	Case[][] cases;
 
 	public Plateau() {
 		this.cases= new Case[Constantes.LIGNE][Constantes.COLONNE];

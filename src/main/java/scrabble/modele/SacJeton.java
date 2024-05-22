@@ -3,8 +3,6 @@ package scrabble.modele;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
-
 import scrabble.gui.Console;
 import scrabble.utils.SacVideException;
 

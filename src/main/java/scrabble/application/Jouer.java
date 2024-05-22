@@ -19,7 +19,7 @@ public class Jouer {
 	
 	
 
-	private List<Integer> indiceJetonsAJouer;
+	Plateau plateau= new Plateau();
 	
 	
 	public void selectionnerDesLettres(List<Integer> indiceJetonAJouer){
@@ -63,7 +63,7 @@ public class Jouer {
 		
 	}
 
-	private static void remplirChevalet(int nbJetonAEchanger, SacJeton sacJeton, Chevalet chevalet)
+	static void remplirChevalet(SacJeton sacJeton, Chevalet chevalet)
 			throws SacVideException {
 
 		if (sacJeton.estVide()) {
