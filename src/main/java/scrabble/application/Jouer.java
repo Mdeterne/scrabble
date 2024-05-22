@@ -38,7 +38,19 @@ public class Jouer {
 		Jeton jeton = null;
 		jeton = chevalet.selectionner(indiceJetonAJouer.get(0));
 		placerUnJeton(jeton,position);
-		chevalet.enlever(0);
+		if (direction.equals(Direction.BAS)) {
+			for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
+				position.setColonne(position.getColonne()+1);
+				placerUnJeton(jeton,position);
+			}
+		}
+		if (direction.equals(Direction.DROITE)) {
+			for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
+				position.setLigne(position.getLigne()+1);
+				placerUnJeton(jeton,position);
+			}
+		}
+		chevalet.enlever(indiceJetonAJouer.get(0));
 	}
 
 	private static void remplirChevalet(int nbJetonAEchanger, SacJeton sacJeton, Chevalet chevalet)
