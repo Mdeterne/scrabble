@@ -51,5 +51,9 @@ public class Plateau {
 		}
 		return estVide;
 	}
+	
+	public void ajouterUnJeton(Jeton jeton, Position position) {
+		cases[position.getLigne()][position.getColonne()].getJeton(jeton);
+	}
 }
 

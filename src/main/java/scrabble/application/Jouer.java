@@ -16,22 +16,20 @@ import scrabble.utils.SacVideException;
 public class Jouer {
 
 	Chevalet chevaletJoueur1;
-	Plateau plateau;
 	SacJeton sacJeton;
 
 	private List<Integer> indiceJetonsAJouer;
+	Plateau plateau= new Plateau();
 	
 	public void selectionnerDesLettres(List<Integer> indiceJetonAJouer){
 		//TODO
 	}
-	public void tourDeJeu() {
-		// TODO
-	}
-
-	public void placerUnJeton(Jeton jetonJouer) {
-		if (plateau.estVide()) {
-
+	
+	public void placerUnJeton(Jeton jetonJouer, Position position) {
+		if(plateau.estVide()) {
+			plateau.cases[7][7].add(jetonJouer);
 		}
+		
 	}
 
 	public void placerUnMot(List<Integer> indiceJetonAJouer,Plateau plateau,Direction direction,Chevalet chevalet,Position position) {
