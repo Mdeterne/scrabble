@@ -31,16 +31,17 @@ public class Jeton {
     	return this.lettre + " " + this.points;
     }
      
-    public void attribuerJoker(String joker) {
+    public void attribuerJoker() {
     	Scanner input = new Scanner(System.in);
         System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
         String maLettre = input.nextLine();
-    	if (maLettre == null) {
-    	    System.out.println("La lettre n'est pas prsente dans l'alphabet français");
-    	}
-    	else {
-    		joker.setLettre(maLettre);
-    	}
+        try {
+        	Lettre lettreRemplacement=Lettre.valueOf(maLettre);
+        	this.lettre= lettreRemplacement.getLettre();
+        }catch (IllegalArgumentException e) {
+        	System.out.println("La lettre saisie n'est pas valide");
+        }
+    	
     }
    
 }

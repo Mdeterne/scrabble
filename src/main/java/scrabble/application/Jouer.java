@@ -29,7 +29,7 @@ public class Jouer {
 	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
 		String lettreJeton= jetonJoue.getLettre();
 		if(lettreJeton.equals(Lettre.JOKER.getLettre())) {
-			jetonJoue.attribuerJoker(jetonJoue.getLettre());
+			jetonJoue.attribuerJoker();
 		}
 		if(plateau.estVide()) {
 			plateau.ajouterJeton(jetonJoue, new Position(8,8));

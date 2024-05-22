@@ -39,12 +39,4 @@ public enum Lettre {
         return lettre;
     }
 	
-	public static Lettre forValue(String valeur) {
-        for (Lettre val: values()) {
-            if (val.equals(valeur)) {
-                return val;
-            }
-        }
-		return null;
-    }
 }
