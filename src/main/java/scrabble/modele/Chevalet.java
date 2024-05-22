@@ -25,10 +25,6 @@ public class Chevalet {
 		}
 	}
 	
-	void jouer(Jeton jeton, Position position){
-		// TODO Ajouter l'envoi d'un jeton vers une case du plateau
-	}
-	
 	public void afficher() {
 	    if (jetons.isEmpty()) {
 	        Console.message("Le chevalet est vide.");
@@ -60,4 +56,7 @@ public class Chevalet {
 		jetons.removeAll(jetons);
 	}
 	
+	public void enlever(int indice) {
+		jetons.remove(indice);
+	}
 }
