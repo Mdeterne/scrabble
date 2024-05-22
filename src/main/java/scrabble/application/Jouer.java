@@ -18,7 +18,6 @@ public class Jouer {
 	Chevalet chevaletJoueur1;
 	SacJeton sacJeton;
 
-	private List<Integer> indiceJetonsAJouer;
 	Plateau plateau= new Plateau();
 	
 	public void selectionnerDesLettres(List<Integer> indiceJetonAJouer){
@@ -41,7 +40,7 @@ public class Jouer {
 		chevalet.enlever(0);
 	}
 
-	private static void remplirChevalet(int nbJetonAEchanger, SacJeton sacJeton, Chevalet chevalet)
+	static void remplirChevalet(SacJeton sacJeton, Chevalet chevalet)
 			throws SacVideException {
 
 		if (sacJeton.estVide()) {
