@@ -52,16 +52,6 @@ public class Plateau {
 		return estVide;
 	}
 	
-	public Case[][] getCases() {
-		return cases;
-	}
-
-
-	public void setCases(Case[][] cases) {
-		this.cases = cases;
-	}
-
-
 	public void ajouterUnJeton(Jeton jeton) {
 		cases.add(jeton);
 	}
