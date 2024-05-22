@@ -31,7 +31,7 @@ public class Jeton {
     	return this.lettre + " " + this.points;
     }
      
-    public void attribuerJoker(Lettre joker) {
+    public void attribuerJoker(String joker) {
     	Scanner input = new Scanner(System.in);
         System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
         String maLettre = input.nextLine();
