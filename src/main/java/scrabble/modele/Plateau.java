@@ -7,7 +7,7 @@ public class Plateau {
 	private Case[][] cases;
 
 	public Plateau() {
-		this.cases = new Case[Constantes.LIGNE][Constantes.COLONNE];
+		this.setCases(new Case[Constantes.LIGNE][Constantes.COLONNE]);
 		remplirMonPlateau();
 	}
 
@@ -15,23 +15,23 @@ public class Plateau {
 	private Case[][] remplirMonPlateau() {
 		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
 			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
-				cases[i][j] = new Case(Specialite.NEUTRE);
+				getCases()[i][j] = new Case(Specialite.NEUTRE);
 			}
 		}
 		
-		cases[7][7].setSpecialite(Specialite.ETOILE);
-		return cases;
+		getCases()[7][7].setSpecialite(Specialite.ETOILE);
+		return getCases();
 	}
 	
 	public void Afficher() {
-		if (cases[0][0]==null) {
+		if (getCases()[0][0]==null) {
 			Console.message("Le plateau est vide.");
 		}
 		else {
 			for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
 				for (int j = 0 ; j < Constantes.COLONNE ; j++) {
 					System.out.println("("+i+","+j+")");
-					Console.message(this.cases[i][j].toString());
+					Console.message(this.getCases()[i][j].toString());
 				}
 			}
 		}
@@ -41,7 +41,7 @@ public class Plateau {
 		boolean estVide = false;
 		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
 			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
-				if (cases[i][j] instanceof Case) {
+				if (getCases()[i][j] instanceof Case) {
 					estVide = false;
 				}
 				else {
@@ -52,8 +52,18 @@ public class Plateau {
 		return estVide;
 	}
 	
-	public void ajouterUnJeton(Jeton jeton, Position position) {
-		cases[position.getLigne()][position.getColonne()].getJeton(jeton);
+	public Case[][] getCases() {
+		return cases;
+	}
+
+
+	public void setCases(Case[][] cases) {
+		this.cases = cases;
+	}
+
+
+	public void ajouterUnJeton(Jeton jeton) {
+		cases.add(jeton);
 	}
 }
 

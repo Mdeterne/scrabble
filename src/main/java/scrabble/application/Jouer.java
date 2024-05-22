@@ -27,7 +27,7 @@ public class Jouer {
 	
 	public void placerUnJeton(Jeton jetonJouer, Position position) {
 		if(plateau.estVide()) {
-			plateau.cases[7][7].add(jetonJouer);
+			plateau.getCases().setCase([7][7]).ajouterUnJeton(jetonJouer);
 		}
 		
 	}
