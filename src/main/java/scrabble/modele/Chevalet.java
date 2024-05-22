@@ -9,7 +9,7 @@ import scrabble.gui.Console;
 import scrabble.utils.SacVideException;
 
 public class Chevalet {
-	public List<Jeton> jetons; 
+	private List<Jeton> jetons; 
 	
 	public Chevalet(){
 		this.jetons = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Chevalet {
 	}
 	
 	public Jeton selectionner(int indice) {
-		return jetons.get(indice);
+		return jetons.get(indice-1);
 	}
 	
 	public void nettoyer() {
