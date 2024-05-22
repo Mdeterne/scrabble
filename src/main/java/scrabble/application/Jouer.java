@@ -26,7 +26,7 @@ public class Jouer {
 		}
 	}
 	
-	private static void remplirChevalet(int nbJetonAEchanger, SacJeton sacJeton, Chevalet chevaletJoueur1) throws SacVideException {
+	static void remplirChevalet(SacJeton sacJeton, Chevalet chevaletJoueur1) throws SacVideException {
 		if (sacJeton.estVide()) {
 			throw new SacVideException("Le sac est vide impossible de piocher");
 		}
@@ -35,8 +35,8 @@ public class Jouer {
 		for (int i=0; i<Constantes.NBPLACECHEVALET; i++) {
 			
 			transition.add(sacJeton.piocherJeton());
-			
 		}
+		System.out.println(transition.size());
 		chevaletJoueur1.ajouterUneListeJeton(transition);
 	}
 	private static void echanger(SacJeton sacJeton, Chevalet chevaletJoueur1) throws SacVideException {
