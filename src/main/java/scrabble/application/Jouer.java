@@ -8,6 +8,7 @@ import scrabble.modele.Chevalet;
 import scrabble.modele.Constantes;
 import scrabble.modele.Direction;
 import scrabble.modele.Jeton;
+import scrabble.modele.Lettre;
 import scrabble.modele.Plateau;
 import scrabble.modele.Position;
 import scrabble.modele.SacJeton;
@@ -15,16 +16,21 @@ import scrabble.utils.SacVideException;
 
 public class Jouer {
 
-	Chevalet chevaletJoueur1;
-	SacJeton sacJeton;
+	
+	
 
 	Plateau plateau= new Plateau();
+	
 	
 	public void selectionnerDesLettres(List<Integer> indiceJetonAJouer){
 		//TODO
 	}
 	
-	public void placerUnJeton(Jeton jetonJoue, Position position) {
+	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
+		String lettreJeton= jetonJoue.getLettre();
+		if(lettreJeton.equals(Lettre.JOKER.getLettre())) {
+			jetonJoue.attribuerJoker(jetonJoue.getLettre());
+		}
 		if(plateau.estVide()) {
 			plateau.ajouterJeton(jetonJoue, new Position(8,8));
 		}
@@ -34,10 +40,27 @@ public class Jouer {
 	}
 
 	public void placerUnMot(List<Integer> indiceJetonAJouer,Plateau plateau,Direction direction,Chevalet chevalet,Position position) {
-		Jeton jeton = null;
-		jeton = chevalet.selectionner(indiceJetonAJouer.get(0));
-		placerUnJeton(jeton,position);
-		chevalet.enlever(0);
+		
+		Jeton jeton = chevalet.selectionner(indiceJetonAJouer.get(0));
+		placerUnJeton(jeton,position,plateau);
+		if (direction.equals(Direction.BAS)) {
+			for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
+				position.setColonne(position.getColonne()+1);
+				jeton = chevalet.selectionner(indiceJetonAJouer.get(i+1));
+				placerUnJeton(jeton,position,plateau);
+			}
+		}
+		if (direction.equals(Direction.DROITE)) {
+			for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
+				position.setLigne(position.getLigne()+1);
+				jeton = chevalet.selectionner(indiceJetonAJouer.get(i+1));
+				placerUnJeton(jeton,position,plateau);
+			}
+		}
+		for (int i= indiceJetonAJouer.size() ; i > 0 ; i--) {
+			chevalet.enlever(indiceJetonAJouer.get(i));
+		}
+		
 	}
 
 	static void remplirChevalet(SacJeton sacJeton, Chevalet chevalet)
@@ -77,6 +100,25 @@ public class Jouer {
 		chevalet.ajouterUneListeJeton(transition);
 		sacJeton.ajouterUneListeJeton(transition2);
 
+	}
+	public static void main(String[]arg) {
+		
+		SacJeton sacJeton = new SacJeton();
+		Plateau plateau = new Plateau();
+		Chevalet chevalet = new Chevalet();
+		
+		sacJeton.mettreDesJetonDansMonSac();
+		sacJeton.melangerSac();
+		
+		try {
+			remplirChevalet(Constantes.NBPLACECHEVALET,sacJeton,chevalet);
+		} catch (SacVideException e) {
+			Console.message("le sac est vide");
+		}	
+		
+		
+		
+		
 	}
 
 }
