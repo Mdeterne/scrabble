@@ -21,7 +21,7 @@ public class Chevalet {
 			this.jetons.add(jeton);
 		}
 		else {
-			Console.message("impposible votre chevalet est plein");
+			Console.message("Erreur: votre chevalet est plein");
 		}
 	}
 	
@@ -44,8 +44,14 @@ public class Chevalet {
 		return jetons.size();
 	}
 	
-	public void ajouterUneListeJeton(List<Jeton> jetonEchanger) {
-		jetons.addAll(jetonEchanger);
+	public void ajouterUneListeJeton(List<Jeton> jetonsAAjouter) {
+		if (Constantes.NBPLACECHEVALET-jetons.size()>=jetonsAAjouter.size()) {
+			jetons.addAll(jetonsAAjouter);
+		}
+		else {
+			Console.message("Erreur: votre chevalet n'as pas assez de place");
+		}
+		
 	}
 	
 	public Jeton selectionner(int indice) {
