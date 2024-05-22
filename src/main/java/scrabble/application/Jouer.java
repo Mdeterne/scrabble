@@ -25,11 +25,13 @@ public class Jouer {
 		//TODO
 	}
 	
-	public void placerUnJeton(Jeton jetonJouer, Position position) {
+	public void placerUnJeton(Jeton jetonJoue, Position position) {
 		if(plateau.estVide()) {
-			plateau.getCases().setCase([7][7]).ajouterUnJeton(jetonJouer);
+			plateau.ajouterJeton(jetonJoue, new Position(8,8));
 		}
-		
+		else {
+			plateau.ajouterJeton(jetonJoue, position);
+		}
 	}
 
 	public void placerUnMot(List<Integer> indiceJetonAJouer,Plateau plateau,Direction direction,Chevalet chevalet,Position position) {
