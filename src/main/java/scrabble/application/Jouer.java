@@ -15,17 +15,17 @@ import scrabble.utils.SacVideException;
 
 public class Jouer {
 
-	Chevalet chevaletJoueur1;
-	SacJeton sacJeton;
+	
+	
 
 	private List<Integer> indiceJetonsAJouer;
-	Plateau plateau= new Plateau();
+	
 	
 	public void selectionnerDesLettres(List<Integer> indiceJetonAJouer){
 		//TODO
 	}
 	
-	public void placerUnJeton(Jeton jetonJoue, Position position) {
+	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
 		if(plateau.estVide()) {
 			plateau.ajouterJeton(jetonJoue, new Position(8,8));
 		}
@@ -37,22 +37,22 @@ public class Jouer {
 	public void placerUnMot(List<Integer> indiceJetonAJouer,Plateau plateau,Direction direction,Chevalet chevalet,Position position) {
 		
 		Jeton jeton = chevalet.selectionner(indiceJetonAJouer.get(0));
-		placerUnJeton(jeton,position);
+		placerUnJeton(jeton,position,plateau);
 		if (direction.equals(Direction.BAS)) {
 			for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
 				position.setColonne(position.getColonne()+1);
 				jeton = chevalet.selectionner(indiceJetonAJouer.get(i+1));
-				placerUnJeton(jeton,position);
+				placerUnJeton(jeton,position,plateau);
 			}
 		}
 		if (direction.equals(Direction.DROITE)) {
 			for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
 				position.setLigne(position.getLigne()+1);
 				jeton = chevalet.selectionner(indiceJetonAJouer.get(i+1));
-				placerUnJeton(jeton,position);
+				placerUnJeton(jeton,position,plateau);
 			}
 		}
-		for (int i=0 ; i < indiceJetonAJouer.size() ; i++) {
+		for (int i= indiceJetonAJouer.size() ; i > 0 ; i--) {
 			chevalet.enlever(indiceJetonAJouer.get(i));
 		}
 		
@@ -95,6 +95,25 @@ public class Jouer {
 		chevalet.ajouterUneListeJeton(transition);
 		sacJeton.ajouterUneListeJeton(transition2);
 
+	}
+	public static void main(String[]arg) {
+		
+		SacJeton sacJeton = new SacJeton();
+		Plateau plateau = new Plateau();
+		Chevalet chevalet = new Chevalet();
+		
+		sacJeton.mettreDesJetonDansMonSac();
+		sacJeton.melangerSac();
+		
+		try {
+			remplirChevalet(Constantes.NBPLACECHEVALET,sacJeton,chevalet);
+		} catch (SacVideException e) {
+			Console.message("le sac est vide");
+		}	
+		
+		
+		
+		
 	}
 
 }
