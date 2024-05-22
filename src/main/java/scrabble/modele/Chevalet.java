@@ -57,6 +57,6 @@ public class Chevalet {
 	}
 	
 	public void enlever(int indice) {
-		jetons.remove(indice);
+		jetons.remove(indice-1);
 	}
 }

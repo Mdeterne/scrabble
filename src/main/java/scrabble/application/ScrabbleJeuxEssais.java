@@ -60,7 +60,8 @@ public class ScrabbleJeuxEssais {
 		}
 		
 		chevalet.afficher();
-		
+		chevalet.enlever(2);
+		chevalet.afficher();
 	}
 	
 	private static void remplirChevalet(int nbJetonAEchanger, SacJeton sacJeton, Chevalet chevalet) throws SacVideException {
