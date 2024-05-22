@@ -8,6 +8,7 @@ import scrabble.modele.Chevalet;
 import scrabble.modele.Constantes;
 import scrabble.modele.Direction;
 import scrabble.modele.Jeton;
+import scrabble.modele.Lettre;
 import scrabble.modele.Plateau;
 import scrabble.modele.Position;
 import scrabble.modele.SacJeton;
@@ -26,6 +27,10 @@ public class Jouer {
 	}
 	
 	public void placerUnJeton(Jeton jetonJoue, Position position) {
+		String lettreJeton= jetonJoue.getLettre();
+		if(lettreJeton.equals(Lettre.JOKER.getLettre())) {
+			
+		}
 		if(plateau.estVide()) {
 			plateau.ajouterJeton(jetonJoue, new Position(8,8));
 		}
