@@ -1,12 +1,10 @@
 package scrabble.modele;
 
 import java.util.ArrayList;
-import java.util.Collection;
+//import java.util.Collection;
 import java.util.List;
-import java.util.Scanner;
-
 import scrabble.gui.Console;
-import scrabble.utils.SacVideException;
+//import scrabble.utils.SacVideException;
 
 public class Chevalet {
 	private List<Jeton> jetons; 

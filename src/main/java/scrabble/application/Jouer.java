@@ -2,6 +2,7 @@ package scrabble.application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import scrabble.gui.Console;
 import scrabble.modele.Chevalet;
@@ -15,15 +16,21 @@ import scrabble.modele.SacJeton;
 import scrabble.utils.SacVideException;
 
 public class Jouer {
-
 	
-	
-
 	Plateau plateau= new Plateau();
 	
-	
 	public void selectionnerDesLettres(List<Integer> indiceJetonAJouer){
-		//TODO
+		try {
+			Scanner input = new Scanner(System.in);
+	        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
+	        Integer indice = input.nextInt();
+	        input.close();
+	        if(indice>1 || indice<7) {
+	        	indiceJetonAJouer.add(indice);
+	        }
+		}catch (IllegalArgumentException e) {
+        	System.out.println("L'indice de la lettre que vous avez choisie est invalide");
+        }
 	}
 	
 	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
