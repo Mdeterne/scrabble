@@ -36,7 +36,7 @@ public class Jeton {
         System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
         String maLettre = input.nextLine();
         try {
-        	Lettre lettreRemplacement=Lettre.valueOf(maLettre);
+        	Lettre lettreRemplacement=Lettre.valueOf(maLettre.toUpperCase());
         	this.lettre= lettreRemplacement.getLettre();
         }catch (IllegalArgumentException e) {
         	System.out.println("La lettre saisie n'est pas valide");
