@@ -42,10 +42,10 @@ public class Plateau {
 		for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
 			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
 				if (Boolean.TRUE.equals(cases[i][j].getPresenceJeton())) {
-					estVide = true;
+					estVide = false;
 				}
 				else {
-					estVide = false;
+					estVide = true;
 				}
 			}
 		}
@@ -56,6 +56,14 @@ public class Plateau {
 	public void ajouterJeton(Jeton jeton, Position position){
 		cases[position.getLigne()-1][position.getColonne()-1].setJeton(jeton);
 		cases[position.getLigne()-1][position.getColonne()-1].setPresenceJeton(true);
+	}
+	
+	public Boolean caseEstVide(Position position) {
+		Boolean estVide = true;
+		if(cases[position.getLigne()-1][position.getColonne()-1] instanceof Case) {
+			estVide = false;
+		}
+		return estVide;
 	}
 }
 
