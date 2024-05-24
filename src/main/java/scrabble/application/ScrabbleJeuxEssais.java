@@ -11,6 +11,8 @@ import java.util.List;
 import scrabble.gui.Console;
 import scrabble.modele.Chevalet;
 import scrabble.modele.Constantes;
+import scrabble.modele.Position;
+import scrabble.modele.Direction;
 
 public class ScrabbleJeuxEssais {
 
@@ -58,7 +60,7 @@ public class ScrabbleJeuxEssais {
 		} catch (SacVideException e) {
 			Console.message("Impossible de piocher le sac est vide");
 		}
-		
+		Position position = new Position(7,7);
 		chevalet.afficher();
 		chevalet.enlever(2);
 		chevalet.afficher();
