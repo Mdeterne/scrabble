@@ -48,26 +48,60 @@ public class Jouer {
 
 	public void placerUnMot(List<Integer> indiceJetonAJouer,Plateau plateau,Direction direction,Chevalet chevalet,Position position) {
 		
-		Jeton jeton = chevalet.selectionner(indiceJetonAJouer.get(0));
-		placerUnJeton(jeton,position,plateau);
-		if (direction.equals(Direction.BAS)) {
-			for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
-				position.setColonne(position.getColonne()+1);
-				jeton = chevalet.selectionner(indiceJetonAJouer.get(i+1));
+		if (plateau.caseEstVide(position).equals(true)) {
+			Boolean condition1Rempli = false;
+			if (direction.equals(Direction.BAS)) {
+				Position position1 = new Position(position.getLigne(),position.getColonne()-1);
+				Position position2 = new Position(position.getLigne()-1,position.getColonne());
+				Position position3 = new Position(position.getLigne(),position.getColonne()+1);
+				Position position4 = new Position(position.getLigne()+1,position.getColonne());
+				if ( plateau.caseEstVide(position1).equals(true) || plateau.caseEstVide(position2).equals(true) || plateau.caseEstVide(position3).equals(true)) {
+					condition1Rempli = true;
+					for (int i = 0; i < indiceJetonAJouer.size()-1; i++) {
+						if (plateau.caseEstVide(position4)) {
+							condition1Rempli = false;
+							position4 = new Position(position4.getLigne()+1,position4.getColonne());
+						}
+					}
+				}
+			}
+			if (direction.equals(Direction.DROITE)) {
+				Position position1 = new Position(position.getLigne()-1,position.getColonne());
+				Position position2 = new Position(position.getLigne(),position.getColonne()-1);
+				Position position3 = new Position(position.getLigne()+1,position.getColonne());
+				Position position4 = new Position(position.getLigne(),position.getColonne()+1);
+				if ( plateau.caseEstVide(position1).equals(true) || plateau.caseEstVide(position2).equals(true) || plateau.caseEstVide(position3).equals(true)) {
+					condition1Rempli = true;
+					for (int i = 0; i < indiceJetonAJouer.size()-1; i++) {
+						if (plateau.caseEstVide(position4)) {
+							condition1Rempli = false;
+							position4 = new Position(position4.getLigne(),position4.getColonne()+1);
+						}
+					}
+				}
+			}
+			if (condition1Rempli==true) {
+				Jeton jeton = chevalet.selectionner(indiceJetonAJouer.get(0));
 				placerUnJeton(jeton,position,plateau);
+				if (direction.equals(Direction.BAS)) {
+					for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
+						position.setColonne(position.getColonne()+1);
+						jeton = chevalet.selectionner(indiceJetonAJouer.get(i+1));
+						placerUnJeton(jeton,position,plateau);
+					}
+				}
+				if (direction.equals(Direction.DROITE)) {
+					for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
+						position.setLigne(position.getLigne()+1);
+						jeton = chevalet.selectionner(indiceJetonAJouer.get(i+1));
+						placerUnJeton(jeton,position,plateau);
+					}
+				}
+				for (int i= indiceJetonAJouer.size() ; i > 0 ; i--) {
+					chevalet.enlever(indiceJetonAJouer.get(i));
+				}
 			}
 		}
-		if (direction.equals(Direction.DROITE)) {
-			for (int i=0 ; i < indiceJetonAJouer.size()-1 ; i++) {
-				position.setLigne(position.getLigne()+1);
-				jeton = chevalet.selectionner(indiceJetonAJouer.get(i+1));
-				placerUnJeton(jeton,position,plateau);
-			}
-		}
-		for (int i= indiceJetonAJouer.size() ; i > 0 ; i--) {
-			chevalet.enlever(indiceJetonAJouer.get(i));
-		}
-		
 	}
 
 	static void remplirChevalet(SacJeton sacJeton, Chevalet chevalet)
@@ -118,7 +152,7 @@ public class Jouer {
 		sacJeton.melangerSac();
 		
 		try {
-			remplirChevalet(Constantes.NBPLACECHEVALET,sacJeton,chevalet);
+			remplirChevalet(sacJeton,chevalet);
 		} catch (SacVideException e) {
 			Console.message("le sac est vide");
 		}	
