@@ -17,25 +17,27 @@ import scrabble.utils.SacVideException;
 
 public class Jouer {
 	
-	public static void selectionnerDesLettres(ArrayList<Integer> indiceJetonAJouer){
+	public static void selectionnerDesLettres(ArrayList<Integer> positionJetonAJouer){
 		
 		try {
 			Scanner inputNBLettre = new Scanner(System.in);
 			Console.message("combien de lettres voulez vous utiliser :");
 			Integer nbLettre = inputNBLettre.nextInt();
 			if (nbLettre>0 && nbLettre<8) {
+				Scanner inputLettre = new Scanner(System.in);
 				for (int i=0; i<nbLettre; i++) {
-					Scanner inputLettre = new Scanner(System.in);
+					
 				    Console.message("Entrer l'indice de la lettre que vous souhaitez utiliser: ");
 				    Integer indice = inputLettre.nextInt();
-				    inputLettre.close();
+				    
 				    if(indice>0 && indice<8) {
-			        	indiceJetonAJouer.add(indice+1);
+			        	positionJetonAJouer.add(indice-1);
 			        }
 				    else {
 				    	Console.message("veuillez indiquer l'indice pas la lettre");
 				    }
 				}
+				inputLettre.close();
 			}
 			else {
 				Console.message("vous avez selectionner un nombre incorect");
@@ -178,7 +180,7 @@ public class Jouer {
 		chevalet.afficher();
 		Console.message("");
 		selectionnerDesLettres(indiceJetonAJouer);
-		
+		System.out.println(indiceJetonAJouer);
 		
 		
 	}
