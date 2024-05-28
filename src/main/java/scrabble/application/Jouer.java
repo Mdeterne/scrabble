@@ -17,20 +17,23 @@ import scrabble.utils.SacVideException;
 
 public class Jouer {
 	
-	Plateau plateau= new Plateau();
-	
-	public void selectionnerDesLettres(List<Integer> indiceJetonAJouer){
-		try {
-			Scanner input = new Scanner(System.in);
-	        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
-	        Integer indice = input.nextInt();
-	        input.close();
-	        if(indice>1 || indice<7) {
-	        	indiceJetonAJouer.add(indice);
-	        }
-		}catch (IllegalArgumentException e) {
-        	System.out.println("L'indice de la lettre que vous avez choisie est invalide");
-        }
+	public static void selectionnerDesLettres(ArrayList<Integer> indiceJetonAJouer){
+		
+		Scanner inputNBLettre = new Scanner(System.in);
+		Console.message("combien de lettres voulez vous utiliser :");
+		Integer nbLettre = inputNBLettre.nextInt();
+		if (nbLettre>0 || nbLettre<8) {
+			for (int i=0; i<nbLettre; i++) {
+				Scanner inputLettre = new Scanner(System.in);
+			    Console.message("Entrer la lettre que vous souhaitez utiliser: ");
+			    Integer indice = inputLettre.nextInt();
+			    inputLettre.close();
+			    if(indice>0 || indice<8) {
+		        	indiceJetonAJouer.add(indice+1);
+		        }
+			}
+		}
+		inputNBLettre.close();
 	}
 	
 	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
@@ -100,6 +103,7 @@ public class Jouer {
 				for (int i= indiceJetonAJouer.size() ; i > 0 ; i--) {
 					chevalet.enlever(indiceJetonAJouer.get(i));
 				}
+				
 			}
 		}
 	}
@@ -148,6 +152,9 @@ public class Jouer {
 		Plateau plateau = new Plateau();
 		Chevalet chevalet = new Chevalet();
 		
+		ArrayList<Integer> indiceJetonAJouer;
+		indiceJetonAJouer = new ArrayList<>();
+		
 		sacJeton.mettreDesJetonDansMonSac();
 		sacJeton.melangerSac();
 		
@@ -157,6 +164,9 @@ public class Jouer {
 			Console.message("le sac est vide");
 		}	
 		
+		chevalet.afficher();
+		Console.message("");
+		selectionnerDesLettres(indiceJetonAJouer);
 		
 		
 		

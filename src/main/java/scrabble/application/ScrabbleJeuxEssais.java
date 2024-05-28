@@ -100,5 +100,7 @@ public class ScrabbleJeuxEssais {
 		chevalet.ajouterUneListeJeton(transition);
 		sacJeton.ajouterUneListeJeton(transition2);
 		
+		
+		
 	}
 }
