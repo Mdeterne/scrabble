@@ -19,21 +19,32 @@ public class Jouer {
 	
 	public static void selectionnerDesLettres(ArrayList<Integer> indiceJetonAJouer){
 		
-		Scanner inputNBLettre = new Scanner(System.in);
-		Console.message("combien de lettres voulez vous utiliser :");
-		Integer nbLettre = inputNBLettre.nextInt();
-		if (nbLettre>0 || nbLettre<8) {
-			for (int i=0; i<nbLettre; i++) {
-				Scanner inputLettre = new Scanner(System.in);
-			    Console.message("Entrer la lettre que vous souhaitez utiliser: ");
-			    Integer indice = inputLettre.nextInt();
-			    inputLettre.close();
-			    if(indice>0 || indice<8) {
-		        	indiceJetonAJouer.add(indice+1);
-		        }
+		try {
+			Scanner inputNBLettre = new Scanner(System.in);
+			Console.message("combien de lettres voulez vous utiliser :");
+			Integer nbLettre = inputNBLettre.nextInt();
+			if (nbLettre>0 && nbLettre<8) {
+				for (int i=0; i<nbLettre; i++) {
+					Scanner inputLettre = new Scanner(System.in);
+				    Console.message("Entrer l'indice de la lettre que vous souhaitez utiliser: ");
+				    Integer indice = inputLettre.nextInt();
+				    inputLettre.close();
+				    if(indice>0 && indice<8) {
+			        	indiceJetonAJouer.add(indice+1);
+			        }
+				    else {
+				    	Console.message("veuillez indiquer l'indice pas la lettre");
+				    }
+				}
 			}
+			else {
+				Console.message("vous avez selectionner un nombre incorect");
+			}
+			inputNBLettre.close();
 		}
-		inputNBLettre.close();
+		catch (IllegalArgumentException e){
+			Console.message("veuillez entrer un nombre");
+		}
 	}
 	
 	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
