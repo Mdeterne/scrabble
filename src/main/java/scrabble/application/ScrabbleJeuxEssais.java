@@ -20,8 +20,7 @@ public class ScrabbleJeuxEssais {
 		Console.titre("Bienvenue dans notre magnifique scrabble");
 		
 		Plateau plateau = new Plateau();
-		plateau.Afficher();
-		plateau.Afficher();
+		plateau.afficher();
 		
 		SacJeton sacJeton = new SacJeton();
 		sacJeton.mettreDesJetonDansMonSac();

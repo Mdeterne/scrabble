@@ -10,6 +10,27 @@ public class Case {
 		return specialite;
 	}
 	
+	public String afficherSpecialite() {
+		
+		String sspecialite = "00";
+		if (specialite==Specialite.ETOILE) {
+			sspecialite = "**";
+		}
+		if (specialite == Specialite.LETTREDOUBLE) {
+			sspecialite = "LD";
+		}
+		if (specialite == Specialite.LETTRETRIPLE) {
+			sspecialite = "LT";
+		}
+		if (specialite == Specialite.MOTDOUBLE) {
+			sspecialite = "MD";
+		}
+		if (specialite == Specialite.MOTTRIPLE) {
+			sspecialite = "MT";
+		}
+		return sspecialite;
+	}
+	
 	public void setSpecialite(Specialite specialite) {
 		this.specialite = specialite;
 	}
