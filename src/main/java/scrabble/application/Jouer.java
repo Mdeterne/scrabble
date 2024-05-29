@@ -195,7 +195,6 @@ public class Jouer {
 		        Integer ligne = ligneInput.nextInt();
 		        position.setLigne(ligne);
 		        input.close();
-		        
 		        Scanner colonneInput = new Scanner(System.in);
 		        System.out.println("Entrer la colonne sur laquelle vous souhaitez poser votre jeton: ");
 		        Integer colonne = colonneInput.nextInt();
