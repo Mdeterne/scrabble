@@ -162,25 +162,35 @@ public class Jouer {
 	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau){
 		try {
 			Scanner input = new Scanner(System.in);
-	        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
+	        System.out.println("Choisissez ce que vous souhaité faire durant ce tour: ");
 	        Integer indice = input.nextInt();
 	        input.close();
 	        if(indice == 1) {
 	        	
-	        	ArrayList<Integer> listeIndiceLettre = null;
+	        	ArrayList<Integer> listeIndiceLettre;
 	        	selectionnerDesLettres(listeIndiceLettre);
 	        	
-	        	Direction direction = Direction.BAS;
+	        	Direction direction;
+	        	Scanner directionInput = new Scanner(System.in);
+		        System.out.println("Entrer la direction dans laquelle votre mot doit s'écrire: ");
+		        String ligneDirection = directionInput.nextLine();
+		        try {
+		        	direction = Direction.valueOf(ligneDirection.toUpperCase());
+		        }catch (IllegalArgumentException e) {
+		        	System.out.println("La direction saisie n'est pas valide");
+		        }
+		        input.close();
 	        	
-	        	Position position = null;
+	        	
+	        	Position position;
 	        	Scanner ligneInput = new Scanner(System.in);
-		        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
+		        System.out.println("Entrer la ligne sur laquelle vous souhaitez poser votre jeton: ");
 		        Integer ligne = ligneInput.nextInt();
 		        position.setLigne(ligne);
 		        input.close();
 		        
 		        Scanner colonneInput = new Scanner(System.in);
-		        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
+		        System.out.println("Entrer la colonne sur laquelle vous souhaitez poser votre jeton: ");
 		        Integer colonne = colonneInput.nextInt();
 		        position.setColonne(colonne);
 		        input.close();
