@@ -19,7 +19,68 @@ public class Plateau {
 			}
 		}
 		
+		cases[0][0].setSpecialite(Specialite.MOTTRIPLE);
+		cases[0][3].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[0][7].setSpecialite(Specialite.MOTTRIPLE);
+		cases[0][11].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[0][14].setSpecialite(Specialite.MOTTRIPLE);
+		cases[1][1].setSpecialite(Specialite.MOTDOUBLE);
+		cases[1][5].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[1][9].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[1][13].setSpecialite(Specialite.MOTDOUBLE);
+		cases[2][2].setSpecialite(Specialite.MOTDOUBLE);
+		cases[2][6].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[2][8].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[2][12].setSpecialite(Specialite.MOTDOUBLE);
+		cases[3][0].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[3][3].setSpecialite(Specialite.MOTDOUBLE);
+		cases[3][7].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[3][11].setSpecialite(Specialite.MOTDOUBLE);
+		cases[3][14].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[4][4].setSpecialite(Specialite.MOTDOUBLE);
+		cases[4][10].setSpecialite(Specialite.MOTDOUBLE);
+		cases[5][1].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[5][5].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[5][9].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[5][13].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[6][2].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[6][6].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[6][8].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[6][12].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[7][0].setSpecialite(Specialite.MOTTRIPLE);
+		cases[7][3].setSpecialite(Specialite.LETTREDOUBLE);
 		cases[7][7].setSpecialite(Specialite.ETOILE);
+		cases[7][11].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[7][14].setSpecialite(Specialite.MOTTRIPLE);
+		cases[14][0].setSpecialite(Specialite.MOTTRIPLE);
+		cases[14][3].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[14][7].setSpecialite(Specialite.MOTTRIPLE);
+		cases[14][11].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[14][14].setSpecialite(Specialite.MOTTRIPLE);
+		cases[13][1].setSpecialite(Specialite.MOTDOUBLE);
+		cases[13][5].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[13][9].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[13][13].setSpecialite(Specialite.MOTDOUBLE);
+		cases[12][2].setSpecialite(Specialite.MOTDOUBLE);
+		cases[12][6].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[12][8].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[12][12].setSpecialite(Specialite.MOTDOUBLE);
+		cases[11][0].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[11][3].setSpecialite(Specialite.MOTDOUBLE);
+		cases[11][7].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[11][11].setSpecialite(Specialite.MOTDOUBLE);
+		cases[11][14].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[10][4].setSpecialite(Specialite.MOTDOUBLE);
+		cases[10][10].setSpecialite(Specialite.MOTDOUBLE);
+		cases[9][1].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[9][5].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[9][9].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[9][13].setSpecialite(Specialite.LETTRETRIPLE);
+		cases[8][2].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[8][6].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[8][8].setSpecialite(Specialite.LETTREDOUBLE);
+		cases[8][12].setSpecialite(Specialite.LETTREDOUBLE);
+		
 		return cases;
 	}
 	

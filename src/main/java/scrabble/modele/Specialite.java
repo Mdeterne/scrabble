@@ -3,5 +3,9 @@ package scrabble.modele;
 public enum Specialite {
 	
 	NEUTRE,
-	ETOILE;
+	ETOILE,
+	MOTTRIPLE,
+	MOTDOUBLE,
+	LETTRETRIPLE,
+	LETTREDOUBLE;
 }
