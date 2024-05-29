@@ -4,7 +4,7 @@ import scrabble.gui.*;
 
 public class Plateau {
 
-	Case[][] cases;
+	public Case[][] cases;
 
 	public Plateau() {
 		this.cases= new Case[Constantes.LIGNE][Constantes.COLONNE];
@@ -23,7 +23,7 @@ public class Plateau {
 		return cases;
 	}
 	
-	public void Afficher() {
+	public void afficher() {
 		if (cases[0][0]==null) {
 			Console.message("Le plateau est vide.");
 		}
@@ -60,9 +60,7 @@ public class Plateau {
 	
 	public Boolean caseEstVide(Position position) {
 		Boolean estVide = true;
-		if(cases[position.getLigne()-1][position.getColonne()-1] instanceof Case) {
-			estVide = false;
-		}
+		estVide = !cases[position.getLigne() - 1][position.getColonne() - 1].getPresenceJeton();
 		return estVide;
 	}
 }
