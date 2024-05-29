@@ -63,7 +63,7 @@ public class Jouer {
 		}
 	}
 
-	public void placerUnMot(List<Integer> indiceJetonAJouer,Plateau plateau,Direction direction,Chevalet chevalet,Position position) {
+	public static void placerUnMot(List<Integer> indiceJetonAJouer,Plateau plateau,Direction direction,Chevalet chevalet,Position position) {
 		System.out.println("hello");
 		if (plateau.caseEstVide(position).equals(true)) {
 			System.out.println("caseestvide");
@@ -271,9 +271,10 @@ public class Jouer {
 		SacJeton sacJeton = new SacJeton();
 		Plateau plateau = new Plateau();
 		Chevalet chevalet = new Chevalet();
-		Direction direction;
+		Direction direction = Direction.BAS;
 		Integer positionX;
 		Integer positionY;
+		Position position = new Position(1,1);
 		
 		ArrayList<Integer> indiceJetonAJouer;
 		indiceJetonAJouer = new ArrayList<>();
@@ -291,29 +292,39 @@ public class Jouer {
 		Console.message("");
 		selectionnerDesLettres(indiceJetonAJouer);
 		System.out.println(indiceJetonAJouer);
+		Scanner inputDirection = new Scanner(System.in);
 		try {
-			Scanner inputDirection = new Scanner(System.in);
+			
 			Console.message("veuillez entrer la direction du mot: BAS-1 DROITE-2");
-			if (inputDirection.nextInt()==1) {
+			int tdirection = inputDirection.nextInt();
+			if (tdirection==1) {
 				direction = Direction.BAS;
 			}
-			if (inputDirection.nextInt()==2) {
+			if (tdirection==2) {
 				direction = Direction.DROITE;
 			}
-			inputDirection.close();
+			
 		}
 		catch(IllegalArgumentException e) {
 			Console.message("entrez seulement 1 ou 2");
 		}
+		inputDirection.close();
 		try {
 			Scanner inputPositionLigne = new Scanner(System.in);
 			Scanner inputPositionColonne = new Scanner(System.in);
 			Console.message("veuillez entrer la position de la ligne sur laquel vous poserai votre premier jeton");
-			positionX
-		}
+			positionX = inputPositionLigne.nextInt();
+			Console.message("veuillez entrer la position de la colonne sur laquel vous poserai votre premier jeton");
+			positionY = inputPositionColonne.nextInt();
+			position = new Position(positionX,positionY);
+			}
 		catch (IllegalArgumentException e) {
 			Console.message("entrez un nombre de 1 a 15");
 		}
+		
+		placerUnMot(indiceJetonAJouer,plateau,direction,chevalet,position);
+		
+		plateau.afficher();
 	}
 
 }
