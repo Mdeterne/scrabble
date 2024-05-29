@@ -90,13 +90,13 @@ public class Plateau {
 		}
 		else {
 			for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
-				System.out.println(" --  --  --  --  --  --  --  --  --  --  --  --  --  --  -- ");
+				System.out.println(" ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  —— ");
 				for (int j = 0 ; j < Constantes.COLONNE ; j++) {
 					System.out.print("|" + cases[i][j].afficherSpecialite() + "|");
 				}
 				System.out.print("\n");
 			}
-			System.out.println(" --  --  --  --  --  --  --  --  --  --  --  --  --  --  -- ");
+			System.out.println(" ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  —— ");
 		}
 	}
 	
