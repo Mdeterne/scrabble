@@ -164,6 +164,7 @@ public class Jouer {
 		SacJeton sacJeton = new SacJeton();
 		Plateau plateau = new Plateau();
 		Chevalet chevalet = new Chevalet();
+		Direction direction;
 		
 		ArrayList<Integer> indiceJetonAJouer;
 		indiceJetonAJouer = new ArrayList<>();
@@ -181,7 +182,17 @@ public class Jouer {
 		Console.message("");
 		selectionnerDesLettres(indiceJetonAJouer);
 		System.out.println(indiceJetonAJouer);
+		try {
+			Scanner inputDirection = new Scanner(System.in);
+			if (inputDirection.nextInt()==1) {
+				
+			}
+		}
+		catch(IllegalArgumentException e) {
+			Console.message("entrez seulement 1 ou 2");
+		}
 		
+		placerUnMot(indiceJetonAJouer,plateau,Direction.BAS,chevalet,postition);
 		
 	}
 
