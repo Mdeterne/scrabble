@@ -203,7 +203,7 @@ public class Jouer {
 	        Integer indice = input.nextInt();
 	        input.close();
 	        if(indice == 1) {
-	        	ArrayList<Integer> listeIndiceLettre;
+	        	ArrayList<Integer> listeIndiceLettre = null;
 	        	selectionnerDesLettres(listeIndiceLettre);
 	        	
 	        	Integer score = 0;
@@ -212,7 +212,7 @@ public class Jouer {
 	        	}
 	        	joueur.setScore(joueur.getScore()+score);
 	        	
-	        	Direction direction;
+	        	Direction direction = null;
 	        	Scanner directionInput = new Scanner(System.in);
 		        System.out.println("Entrer la direction dans laquelle votre mot doit s'écrire: ");
 		        String ligneDirection = directionInput.nextLine();
@@ -224,7 +224,7 @@ public class Jouer {
 		        input.close();
 	        	
 	        	
-	        	Position position;
+	        	Position position = null;
 	        	Scanner ligneInput = new Scanner(System.in);
 		        System.out.println("Entrer la ligne sur laquelle vous souhaitez poser votre jeton: ");
 		        Integer ligne = ligneInput.nextInt();
