@@ -3,7 +3,6 @@ package scrabble.application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import scrabble.gui.Console;
 import scrabble.modele.Chevalet;
 import scrabble.modele.Constantes;
@@ -159,6 +158,62 @@ public class Jouer {
 		sacJeton.ajouterUneListeJeton(transition2);
 
 	}
+	
+	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau){
+		try {
+			Scanner input = new Scanner(System.in);
+	        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
+	        Integer indice = input.nextInt();
+	        input.close();
+	        if(indice == 1) {
+	        	
+	        	ArrayList<Integer> listeIndiceLettre = null;
+	        	selectionnerDesLettres(listeIndiceLettre);
+	        	
+	        	Direction direction = Direction.BAS;
+	        	
+	        	Position position = null;
+	        	Scanner ligneInput = new Scanner(System.in);
+		        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
+		        Integer ligne = ligneInput.nextInt();
+		        position.setLigne(ligne);
+		        input.close();
+		        
+		        Scanner colonneInput = new Scanner(System.in);
+		        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
+		        Integer colonne = colonneInput.nextInt();
+		        position.setColonne(colonne);
+		        input.close();
+		        
+	        	placerUnMot(listeIndiceLettre,plateau,direction,chevalet,position);
+	        }
+	        if(indice == 2) {
+	        	try {
+	        		echanger(sacJeton, chevalet);
+	        	}catch (SacVideException e) {
+	        		//TODO
+	        	}
+	        	
+	        }
+	        else if(indice == 3) {
+	        	//quitter() TODO;
+	        }
+	        else {
+	        	System.out.println("Le choix n'est pas disponible");
+	        }
+	        
+	        if(!chevalet.estVide()) {
+	        	try {
+	        		remplirChevalet(sacJeton, chevalet);
+	        	}catch (SacVideException e) {
+	        		//TODO
+	        	}
+	        }
+		}catch (IllegalArgumentException e) {
+        	System.out.println("Le choix que vous avez choisie est invalide");
+        }
+	}
+	
 	public static void main(String[]arg) {
 		
 		SacJeton sacJeton = new SacJeton();
