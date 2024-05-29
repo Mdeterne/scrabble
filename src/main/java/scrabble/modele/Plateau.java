@@ -93,10 +93,10 @@ public class Plateau {
 				System.out.println(" ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  —— ");
 				for (int j = 0 ; j < Constantes.COLONNE ; j++) {
 					if (cases[i][j].getPresenceJeton()== true) {
-						System.out.print("|" + cases[i][j].getAffichageLettre() + "|");
+						System.out.print("|" + cases[i][j].getAffichageLettre() + " " + "|");
 					}
 					else {
-						System.out.print("|" + cases[i][j].afficherSpecialite() + "|");
+						System.out.print("|" + cases[i][j].getSpecialite().getSpecialite() + "|");
 					}
 				}
 				System.out.print("\n");
@@ -111,9 +111,6 @@ public class Plateau {
 			for (int j = 0 ; j < Constantes.COLONNE ; j++) {
 				if (Boolean.TRUE.equals(cases[i][j].getPresenceJeton())) {
 					estVide = false;
-				}
-				else {
-					estVide = true;
 				}
 			}
 		}

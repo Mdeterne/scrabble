@@ -287,7 +287,6 @@ public class Jouer {
 			Console.message("entrez seulement 1 ou 2");
 		}
 		
-		placerUnMot(indiceJetonAJouer,plateau,Direction.BAS,chevalet,postition);
 		
 	}
 
