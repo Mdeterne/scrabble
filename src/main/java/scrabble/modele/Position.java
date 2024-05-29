@@ -25,4 +25,9 @@ public class Position {
 	public void setLigne(Integer ligne) {
 		this.ligne = ligne;
 	}
+	
+	@Override
+	public String toString() {
+		return colonne.toString()+" "+ligne.toString();
+	}
 }
