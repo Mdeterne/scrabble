@@ -13,6 +13,7 @@ import scrabble.modele.Lettre;
 import scrabble.modele.Plateau;
 import scrabble.modele.Position;
 import scrabble.modele.SacJeton;
+import scrabble.modele.Specialite;
 import scrabble.utils.SacVideException;
 
 public class Jouer {
@@ -160,6 +161,29 @@ public class Jouer {
 
 	}
 	
+	public Integer multiplicateurMot(Specialite caseSpecialite) {
+		Integer multiplicateur = 1;
+		if(caseSpecialite.getSpecialite().equals("MT")) {
+			multiplicateur = 3;
+		}
+		if(caseSpecialite.getSpecialite().equals("MD")) {
+			multiplicateur = 2;
+		}
+		return multiplicateur;
+	}
+	
+	public Integer multiplicateurLettre(Specialite caseSpecialite) {
+		Integer multiplicateur = 1;
+		if(caseSpecialite.getSpecialite().equals("LT")) {
+			multiplicateur = 3;
+		}
+		if(caseSpecialite.getSpecialite().equals("LD") || caseSpecialite.getSpecialite().equals("**")) {
+			multiplicateur = 2;
+		}
+		return multiplicateur;
+	}
+
+	
 	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
 		try {
 			Scanner input = new Scanner(System.in);
@@ -172,7 +196,6 @@ public class Jouer {
 	        	
 	        	Integer score = 0;
 	        	for(int i = 0 ; i < listeIndiceLettre.size() ; i++) {
-	        		Integer pointJeton = 0;
 	        		score = score + chevalet.selectionner(listeIndiceLettre.get(i)).getPoints();
 	        	}
 	        	joueur.setScore(joueur.getScore()+score);
