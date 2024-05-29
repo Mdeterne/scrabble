@@ -1,7 +1,9 @@
 package scrabble.application;
 
 import scrabble.modele.Plateau;
+import scrabble.modele.Points;
 import scrabble.modele.Jeton;
+import scrabble.modele.Lettre;
 import scrabble.modele.SacJeton;
 import scrabble.utils.SacVideException;
 
@@ -16,11 +18,26 @@ import scrabble.modele.Direction;
 
 public class ScrabbleJeuxEssais {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SacVideException {
 		Console.titre("Bienvenue dans notre magnifique scrabble");
 		
 		Plateau plateau = new Plateau();
 		plateau.afficher();
+		Jeton jeton = new Jeton(Lettre.T, Points.TROIS);
+		Position positionT = new Position(7,7);
+		Jouer jouer = new Jouer();
+		Chevalet chevaletMot = new Chevalet();
+		SacJeton sacJetonMot = new SacJeton();
+		sacJetonMot.mettreDesJetonDansMonSac();
+		Jouer.remplirChevalet(sacJetonMot, chevaletMot);
+		List<Integer> indicesJetonsAJouer = new ArrayList<>();
+		indicesJetonsAJouer.add(1);
+		indicesJetonsAJouer.add(5);
+		//jouer.placerUnJeton(jeton, positionT, plateau);
+		jouer.placerUnMot(indicesJetonsAJouer, plateau, Direction.BAS, chevaletMot, positionT);
+		Console.message("");
+		plateau.afficher();
+		
 		
 		SacJeton sacJeton = new SacJeton();
 		sacJeton.mettreDesJetonDansMonSac();
