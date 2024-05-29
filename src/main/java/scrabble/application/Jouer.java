@@ -8,6 +8,7 @@ import scrabble.modele.Chevalet;
 import scrabble.modele.Constantes;
 import scrabble.modele.Direction;
 import scrabble.modele.Jeton;
+import scrabble.modele.Joueur;
 import scrabble.modele.Lettre;
 import scrabble.modele.Plateau;
 import scrabble.modele.Position;
@@ -159,16 +160,22 @@ public class Jouer {
 
 	}
 	
-	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau){
+	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
 		try {
 			Scanner input = new Scanner(System.in);
 	        System.out.println("Choisissez ce que vous souhaité faire durant ce tour: ");
 	        Integer indice = input.nextInt();
 	        input.close();
 	        if(indice == 1) {
-	        	
 	        	ArrayList<Integer> listeIndiceLettre;
 	        	selectionnerDesLettres(listeIndiceLettre);
+	        	
+	        	Integer score = 0;
+	        	for(int i = 0 ; i < listeIndiceLettre.size() ; i++) {
+	        		Integer pointJeton = 0;
+	        		score = score + chevalet.selectionner(listeIndiceLettre.get(i)).getPoints();
+	        	}
+	        	joueur.setScore(joueur.getScore()+score);
 	        	
 	        	Direction direction;
 	        	Scanner directionInput = new Scanner(System.in);
@@ -219,6 +226,7 @@ public class Jouer {
 	        		//TODO
 	        	}
 	        }
+	        System.out.print("Votre score est : " + joueur.getScore().toString());
 		}catch (IllegalArgumentException e) {
         	System.out.println("Le choix que vous avez choisie est invalide");
         }
