@@ -77,7 +77,7 @@ public class Jouer {
 					condition1Rempli = true;
 					System.out.println("prems "+position4.toString());					
 					for (int i = 0; i < indiceJetonAJouer.size()-1; i++) {
-						if (plateau.caseEstVide(position4)) {
+						if (plateau.caseEstVide(position4).equals(false)) {
 							condition1Rempli = false;
 							System.out.println(position4.toString());
 							position4 = new Position(position4.getLigne()+1,position4.getColonne());
@@ -94,7 +94,7 @@ public class Jouer {
 					condition1Rempli = true;
 					System.out.println("condition true dans droite");
 					for (int i = 0; i < indiceJetonAJouer.size()-1; i++) {
-						if (plateau.caseEstVide(position4)) {
+						if (plateau.caseEstVide(position4).equals(false)) {
 							condition1Rempli = false;
 							System.out.println("position 4 vide dans ddroite");
 							position4 = new Position(position4.getLigne(),position4.getColonne()+1);
@@ -108,20 +108,20 @@ public class Jouer {
 			    placerUnJeton(jeton, position, plateau);
 			    System.out.println("premier jeton placé");
 
-			    Position currentPosition = new Position(position.getLigne(),position.getColonne());
+			    Position positionActuel = new Position(position.getLigne(),position.getColonne());
 
 			    for (int i = 0; i < indiceJetonAJouer.size(); i++) {
 			        System.out.println("if bas/droite for");
 
 			        if (direction.equals(Direction.BAS)) {
-			            currentPosition.setColonne(currentPosition.getColonne() + 1);
+			            positionActuel.setColonne(positionActuel.getColonne() + 1);
 			        } else if (direction.equals(Direction.DROITE)) {
-			            currentPosition.setLigne(currentPosition.getLigne() + 1);
+			            positionActuel.setLigne(positionActuel.getLigne() + 1);
 			        }
 
-			        if (plateau.caseEstVide(currentPosition)) {
+			        if (plateau.caseEstVide(positionActuel)) {
 			            jeton = chevalet.selectionner(indiceJetonAJouer.get(i + 1));
-			            placerUnJeton(jeton, currentPosition, plateau);
+			            placerUnJeton(jeton, positionActuel, plateau);
 			        } else {
 			            break;
 			        }
@@ -272,6 +272,8 @@ public class Jouer {
 		Plateau plateau = new Plateau();
 		Chevalet chevalet = new Chevalet();
 		Direction direction;
+		Integer positionX;
+		Integer positionY;
 		
 		ArrayList<Integer> indiceJetonAJouer;
 		indiceJetonAJouer = new ArrayList<>();
@@ -291,15 +293,27 @@ public class Jouer {
 		System.out.println(indiceJetonAJouer);
 		try {
 			Scanner inputDirection = new Scanner(System.in);
+			Console.message("veuillez entrer la direction du mot: BAS-1 DROITE-2");
 			if (inputDirection.nextInt()==1) {
-				
+				direction = Direction.BAS;
 			}
+			if (inputDirection.nextInt()==2) {
+				direction = Direction.DROITE;
+			}
+			inputDirection.close();
 		}
 		catch(IllegalArgumentException e) {
 			Console.message("entrez seulement 1 ou 2");
 		}
-		
-		
+		try {
+			Scanner inputPositionLigne = new Scanner(System.in);
+			Scanner inputPositionColonne = new Scanner(System.in);
+			Console.message("veuillez entrer la position de la ligne sur laquel vous poserai votre premier jeton");
+			positionX
+		}
+		catch (IllegalArgumentException e) {
+			Console.message("entrez un nombre de 1 a 15");
+		}
 	}
 
 }

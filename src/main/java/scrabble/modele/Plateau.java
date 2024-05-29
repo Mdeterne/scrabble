@@ -92,7 +92,7 @@ public class Plateau {
 			for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
 				System.out.println(" ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  —— ");
 				for (int j = 0 ; j < Constantes.COLONNE ; j++) {
-					if (cases[i][j].getPresenceJeton()== true) {
+					if (cases[i][j].getPresenceJeton() == true) {
 						System.out.print("|" + cases[i][j].getAffichageLettre() + " " + "|");
 					}
 					else {
