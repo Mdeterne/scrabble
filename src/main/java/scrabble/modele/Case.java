@@ -10,6 +10,7 @@ public class Case {
 		return specialite;
 	}
 	
+	
 	public void setSpecialite(Specialite specialite) {
 		this.specialite = specialite;
 	}
@@ -25,7 +26,11 @@ public class Case {
 	public Jeton getJeton() {
 		return jeton;
 	}
-
+	
+	public String getAffichageLettre() {
+		return jeton.getLettre();
+	}
+	
 	public void setJeton(Jeton jeton) {
 		this.jeton = jeton;
 	}

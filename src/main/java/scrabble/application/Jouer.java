@@ -3,16 +3,17 @@ package scrabble.application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import scrabble.gui.Console;
 import scrabble.modele.Chevalet;
 import scrabble.modele.Constantes;
 import scrabble.modele.Direction;
 import scrabble.modele.Jeton;
+import scrabble.modele.Joueur;
 import scrabble.modele.Lettre;
 import scrabble.modele.Plateau;
 import scrabble.modele.Position;
 import scrabble.modele.SacJeton;
+import scrabble.modele.Specialite;
 import scrabble.utils.SacVideException;
 
 public class Jouer {
@@ -171,11 +172,106 @@ public class Jouer {
 		sacJeton.ajouterUneListeJeton(transition2);
 
 	}
+	
+	public Integer multiplicateurMot(Specialite caseSpecialite) {
+		Integer multiplicateur = 1;
+		if(caseSpecialite.getSpecialite().equals("MT")) {
+			multiplicateur = 3;
+		}
+		if(caseSpecialite.getSpecialite().equals("MD")) {
+			multiplicateur = 2;
+		}
+		return multiplicateur;
+	}
+	
+	public Integer multiplicateurLettre(Specialite caseSpecialite) {
+		Integer multiplicateur = 1;
+		if(caseSpecialite.getSpecialite().equals("LT")) {
+			multiplicateur = 3;
+		}
+		if(caseSpecialite.getSpecialite().equals("LD") || caseSpecialite.getSpecialite().equals("**")) {
+			multiplicateur = 2;
+		}
+		return multiplicateur;
+	}
+
+	
+	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
+		try {
+			Scanner input = new Scanner(System.in);
+	        System.out.println("Choisissez ce que vous souhaité faire durant ce tour: ");
+	        Integer indice = input.nextInt();
+	        input.close();
+	        if(indice == 1) {
+	        	ArrayList<Integer> listeIndiceLettre;
+	        	selectionnerDesLettres(listeIndiceLettre);
+	        	
+	        	Integer score = 0;
+	        	for(int i = 0 ; i < listeIndiceLettre.size() ; i++) {
+	        		score = score + chevalet.selectionner(listeIndiceLettre.get(i)).getPoints();
+	        	}
+	        	joueur.setScore(joueur.getScore()+score);
+	        	
+	        	Direction direction;
+	        	Scanner directionInput = new Scanner(System.in);
+		        System.out.println("Entrer la direction dans laquelle votre mot doit s'écrire: ");
+		        String ligneDirection = directionInput.nextLine();
+		        try {
+		        	direction = Direction.valueOf(ligneDirection.toUpperCase());
+		        }catch (IllegalArgumentException e) {
+		        	System.out.println("La direction saisie n'est pas valide");
+		        }
+		        input.close();
+	        	
+	        	
+	        	Position position;
+	        	Scanner ligneInput = new Scanner(System.in);
+		        System.out.println("Entrer la ligne sur laquelle vous souhaitez poser votre jeton: ");
+		        Integer ligne = ligneInput.nextInt();
+		        position.setLigne(ligne);
+		        input.close();
+		        Scanner colonneInput = new Scanner(System.in);
+		        System.out.println("Entrer la colonne sur laquelle vous souhaitez poser votre jeton: ");
+		        Integer colonne = colonneInput.nextInt();
+		        position.setColonne(colonne);
+		        input.close();
+		        
+	        	placerUnMot(listeIndiceLettre,plateau,direction,chevalet,position);
+	        }
+	        if(indice == 2) {
+	        	try {
+	        		echanger(sacJeton, chevalet);
+	        	}catch (SacVideException e) {
+	        		//TODO
+	        	}
+	        	
+	        }
+	        else if(indice == 3) {
+	        	//quitter() TODO;
+	        }
+	        else {
+	        	System.out.println("Le choix n'est pas disponible");
+	        }
+	        
+	        if(!chevalet.estVide()) {
+	        	try {
+	        		remplirChevalet(sacJeton, chevalet);
+	        	}catch (SacVideException e) {
+	        		//TODO
+	        	}
+	        }
+	        System.out.print("Votre score est : " + joueur.getScore().toString());
+		}catch (IllegalArgumentException e) {
+        	System.out.println("Le choix que vous avez choisie est invalide");
+        }
+	}
+	
 	public static void main(String[]arg) {
 		
 		SacJeton sacJeton = new SacJeton();
 		Plateau plateau = new Plateau();
 		Chevalet chevalet = new Chevalet();
+		Direction direction;
 		
 		ArrayList<Integer> indiceJetonAJouer;
 		indiceJetonAJouer = new ArrayList<>();
@@ -193,6 +289,15 @@ public class Jouer {
 		Console.message("");
 		selectionnerDesLettres(indiceJetonAJouer);
 		System.out.println(indiceJetonAJouer);
+		try {
+			Scanner inputDirection = new Scanner(System.in);
+			if (inputDirection.nextInt()==1) {
+				
+			}
+		}
+		catch(IllegalArgumentException e) {
+			Console.message("entrez seulement 1 ou 2");
+		}
 		
 		
 	}
