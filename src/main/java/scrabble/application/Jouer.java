@@ -17,20 +17,36 @@ import scrabble.utils.SacVideException;
 
 public class Jouer {
 	
-	Plateau plateau= new Plateau();
-	
-	public void selectionnerDesLettres(List<Integer> indiceJetonAJouer){
+	public static void selectionnerDesLettres(ArrayList<Integer> positionJetonAJouer){
+		
 		try {
-			Scanner input = new Scanner(System.in);
-	        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
-	        Integer indice = input.nextInt();
-	        input.close();
-	        if(indice>1 || indice<7) {
-	        	indiceJetonAJouer.add(indice);
-	        }
-		}catch (IllegalArgumentException e) {
-        	System.out.println("L'indice de la lettre que vous avez choisie est invalide");
-        }
+			Scanner inputNBLettre = new Scanner(System.in);
+			Console.message("combien de lettres voulez vous utiliser :");
+			Integer nbLettre = inputNBLettre.nextInt();
+			if (nbLettre>0 && nbLettre<8) {
+				Scanner inputLettre = new Scanner(System.in);
+				for (int i=0; i<nbLettre; i++) {
+					
+				    Console.message("Entrer l'indice de la lettre que vous souhaitez utiliser: ");
+				    Integer indice = inputLettre.nextInt();
+				    
+				    if(indice>0 && indice<8) {
+			        	positionJetonAJouer.add(indice-1);
+			        }
+				    else {
+				    	Console.message("veuillez indiquer l'indice pas la lettre");
+				    }
+				}
+				inputLettre.close();
+			}
+			else {
+				Console.message("vous avez selectionner un nombre incorect");
+			}
+			inputNBLettre.close();
+		}
+		catch (IllegalArgumentException e){
+			Console.message("veuillez entrer un nombre");
+		}
 	}
 	
 	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
@@ -100,6 +116,7 @@ public class Jouer {
 				for (int i= indiceJetonAJouer.size() ; i > 0 ; i--) {
 					chevalet.enlever(indiceJetonAJouer.get(i));
 				}
+				
 			}
 		}
 	}
@@ -148,6 +165,9 @@ public class Jouer {
 		Plateau plateau = new Plateau();
 		Chevalet chevalet = new Chevalet();
 		
+		ArrayList<Integer> indiceJetonAJouer;
+		indiceJetonAJouer = new ArrayList<>();
+		
 		sacJeton.mettreDesJetonDansMonSac();
 		sacJeton.melangerSac();
 		
@@ -157,7 +177,10 @@ public class Jouer {
 			Console.message("le sac est vide");
 		}	
 		
-		
+		chevalet.afficher();
+		Console.message("");
+		selectionnerDesLettres(indiceJetonAJouer);
+		System.out.println(indiceJetonAJouer);
 		
 		
 	}
