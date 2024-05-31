@@ -2,6 +2,7 @@ package scrabble.application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import scrabble.gui.Console;
 import scrabble.modele.Chevalet;
@@ -292,16 +293,17 @@ public class Jouer {
 		Console.message("");
 		selectionnerDesLettres(indiceJetonAJouer);
 		System.out.println(indiceJetonAJouer);
-		Scanner inputDirection = new Scanner(System.in);
-		Console.message("veuillez entrer la direction du mot: BAS-1 DROITE-2");
 		
-		int tdirection = inputDirection.nextInt();
 		
-		if (tdirection==2) {
+		if (demandeDirection() == 1) {
+			direction = Direction.BAS;
+		}
+		if (demandeDirection() == 2) {
 			direction = Direction.DROITE;
 		}
 		
-		inputDirection.close();
+		
+		
 		try {
 			Scanner inputPositionLigne = new Scanner(System.in);
 			Scanner inputPositionColonne = new Scanner(System.in);
@@ -318,6 +320,26 @@ public class Jouer {
 		placerUnMot(indiceJetonAJouer,plateau,direction,chevalet,position);
 		
 		plateau.afficher();
+	}
+
+	private static int demandeDirection() {
+		int sdirection = 1;
+		try {
+			do {
+				Scanner inputDirection = new Scanner(System.in);
+				Console.message("entrez la direction de votre mot BAS-1 DROITE-2");
+				sdirection = inputDirection.nextInt();
+				if (sdirection<1 || sdirection>2) {
+					Console.message("veuillez entrer 1 ou 2");
+				}
+				inputDirection.close();
+			}while(sdirection !=1 || sdirection !=2);
+			
+		}
+		catch(IllegalArgumentException e) {
+			Console.message("entrer fausse");
+		}
+		return sdirection;
 	}
 
 }
