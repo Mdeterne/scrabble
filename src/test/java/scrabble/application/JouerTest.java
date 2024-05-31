@@ -71,7 +71,6 @@ public class JouerTest {
 
     @Test
     void doitPlacerUnMotVerticalement() {
-        Jouer joueur = new Jouer();
         List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             indices.add(i);
@@ -80,7 +79,7 @@ public class JouerTest {
         try {
             Jouer.remplirChevalet(sacJeton, chevalet);
         } catch (SacVideException e) {
-            e.printStackTrace();
+            Console.message("Erreur: le sac est vide");
         }
 
         chevalet.nettoyer();
@@ -89,7 +88,7 @@ public class JouerTest {
         chevalet.ajouter(new Jeton(Lettre.C, Points.TROIS));
 
         Position position = new Position(7, 7);
-        joueur.placerUnMot(indices, plateau, Direction.BAS, chevalet, position);
+        Jouer.placerUnMot(indices, plateau, Direction.BAS, chevalet, position);
         assertEquals(Lettre.A.getLettre(), plateau.cases[7][7].getJeton().getLettre());
         assertEquals(Lettre.B.getLettre(), plateau.cases[8][7].getJeton().getLettre());
         assertEquals(Lettre.C.getLettre(), plateau.cases[9][7].getJeton().getLettre());
@@ -97,7 +96,6 @@ public class JouerTest {
 
     @Test
     void doitPlacerUnMotHorizontalement() {
-        Jouer joueur = new Jouer();
         List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             indices.add(i);
@@ -115,7 +113,7 @@ public class JouerTest {
         chevalet.ajouter(new Jeton(Lettre.C, Points.TROIS));
 
         Position position = new Position(7, 7);
-        joueur.placerUnMot(indices, plateau, Direction.DROITE, chevalet, position);
+        Jouer.placerUnMot(indices, plateau, Direction.DROITE, chevalet, position);
 
         assertEquals(Lettre.A.getLettre(), plateau.cases[7][7].getJeton().getLettre());
         assertEquals(Lettre.B.getLettre(), plateau.cases[7][8].getJeton().getLettre());
