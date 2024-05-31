@@ -16,7 +16,7 @@ import scrabble.modele.SacJeton;
 import scrabble.modele.Specialite;
 import scrabble.utils.SacVideException;
 
-public class Jouer {
+public class Jouer{
 	
 	public static void selectionnerDesLettres(ArrayList<Integer> positionJetonAJouer){
 		
@@ -244,6 +244,7 @@ public class Jouer {
 		        
 	        	placerUnMot(listeIndiceLettre,plateau,direction,chevalet,position);
 	        }
+	        
 	        if(indice == 2) {
 	        	try {
 	        		echanger(sacJeton, chevalet);
@@ -252,9 +253,11 @@ public class Jouer {
 	        	}
 	        	
 	        }
+	        
 	        else if(indice == 3) {
 	        	//quitter() TODO;
 	        }
+	        
 	        else {
 	        	System.out.println("Le choix n'est pas disponible");
 	        }
@@ -316,6 +319,8 @@ public class Jouer {
 			Console.message("veuillez entrer la position de la colonne sur laquel vous poserai votre premier jeton");
 			positionY = inputPositionColonne.nextInt();
 			position = new Position(positionX,positionY);
+			inputPositionLigne.close();
+			inputPositionColonne.close();
 			}
 		catch (IllegalArgumentException e) {
 			Console.message("entrez un nombre de 1 a 15");
