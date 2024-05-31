@@ -50,7 +50,7 @@ public class Jouer {
 		}
 	}
 	
-	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
+	public static void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
 		String lettreJeton= jetonJoue.getLettre();
 		if(lettreJeton.equals(Lettre.JOKER.getLettre())) {
 			jetonJoue.attribuerJoker();
@@ -293,21 +293,14 @@ public class Jouer {
 		selectionnerDesLettres(indiceJetonAJouer);
 		System.out.println(indiceJetonAJouer);
 		Scanner inputDirection = new Scanner(System.in);
-		try {
-			
-			Console.message("veuillez entrer la direction du mot: BAS-1 DROITE-2");
-			int tdirection = inputDirection.nextInt();
-			if (tdirection==1) {
-				direction = Direction.BAS;
-			}
-			if (tdirection==2) {
-				direction = Direction.DROITE;
-			}
-			
+		Console.message("veuillez entrer la direction du mot: BAS-1 DROITE-2");
+		
+		int tdirection = inputDirection.nextInt();
+		
+		if (tdirection==2) {
+			direction = Direction.DROITE;
 		}
-		catch(IllegalArgumentException e) {
-			Console.message("entrez seulement 1 ou 2");
-		}
+		
 		inputDirection.close();
 		try {
 			Scanner inputPositionLigne = new Scanner(System.in);
