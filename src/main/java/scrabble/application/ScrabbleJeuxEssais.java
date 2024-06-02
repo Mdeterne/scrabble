@@ -25,16 +25,16 @@ public class ScrabbleJeuxEssais {
 		plateau.afficher();
 		Jeton jeton = new Jeton(Lettre.T, Points.TROIS);
 		Position positionT = new Position(7,7);
-		Jouer jouer = new Jouer();
 		Chevalet chevaletMot = new Chevalet();
 		SacJeton sacJetonMot = new SacJeton();
 		sacJetonMot.mettreDesJetonDansMonSac();
+		sacJetonMot.melangerSac();
 		Jouer.remplirChevalet(sacJetonMot, chevaletMot);
 		List<Integer> indicesJetonsAJouer = new ArrayList<>();
 		indicesJetonsAJouer.add(1);
 		indicesJetonsAJouer.add(5);
 		//jouer.placerUnJeton(jeton, positionT, plateau);
-		jouer.placerUnMot(indicesJetonsAJouer, plateau, Direction.BAS, chevaletMot, positionT);
+		Jouer.placerUnMot(indicesJetonsAJouer, plateau, Direction.BAS, chevaletMot, positionT);
 		Console.message("");
 		plateau.afficher();
 		
