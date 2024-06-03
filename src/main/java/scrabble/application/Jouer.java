@@ -197,70 +197,83 @@ public class Jouer {
 	}
 
 	
-	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
+	public static void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
 		try {
 			Scanner input = new Scanner(System.in);
 	        System.out.println("Choisissez ce que vous souhaité faire durant ce tour: ");
 	        Integer indice = input.nextInt();
 	        input.close();
-	        if(indice == 1) {
-	        	ArrayList<Integer> listeIndiceLettre = null;
-	        	selectionnerDesLettres(listeIndiceLettre);
+	        Boolean finDuTour = false;
+	        
+	        while (finDuTour == false) {
 	        	
-	        	Integer score = 0;
-	        	for(int i = 0 ; i < listeIndiceLettre.size() ; i++) {
-	        		score = score + chevalet.selectionner(listeIndiceLettre.get(i)).getPoints();
-	        	}
-	        	joueur.setScore(joueur.getScore()+score);
-	        	
-	        	Direction direction = null;
-	        	Scanner directionInput = new Scanner(System.in);
-		        System.out.println("Entrer la direction dans laquelle votre mot doit s'écrire: ");
-		        String ligneDirection = directionInput.nextLine();
-		        try {
-		        	direction = Direction.valueOf(ligneDirection.toUpperCase());
-		        }catch (IllegalArgumentException e) {
-		        	System.out.println("La direction saisie n'est pas valide");
+	        	if(indice == 1) {
+		        	ArrayList<Integer> listeIndiceLettre = new ArrayList<>();
+		        	selectionnerDesLettres(listeIndiceLettre);
+		        	
+		        	Integer score = 0;
+		        	for(int i = 0 ; i < listeIndiceLettre.size() ; i++) {
+		        		score = score + chevalet.selectionner(listeIndiceLettre.get(i)).getPoints();
+		        	}
+		        	joueur.setScore(joueur.getScore()+score);
+		        	
+		        	Direction direction = null;
+		        	Scanner directionInput = new Scanner(System.in);
+			        System.out.println("Entrer la direction dans laquelle votre mot doit s'écrire: ");
+			        String ligneDirection = directionInput.nextLine();
+			        try {
+			        	direction = Direction.valueOf(ligneDirection.toUpperCase());
+			        }catch (IllegalArgumentException e) {
+			        	System.out.println("La direction saisie n'est pas valide");
+			        }
+			        input.close();
+		        	
+		        	
+		        	Position position = null;
+		        	Scanner ligneInput = new Scanner(System.in);
+			        System.out.println("Entrer la ligne sur laquelle vous souhaitez poser votre jeton: ");
+			        Integer ligne = ligneInput.nextInt();
+			        position.setLigne(ligne);
+			        input.close();
+			        Scanner colonneInput = new Scanner(System.in);
+			        System.out.println("Entrer la colonne sur laquelle vous souhaitez poser votre jeton: ");
+			        Integer colonne = colonneInput.nextInt();
+			        position.setColonne(colonne);
+			        input.close();
+			        
+		        	placerUnMot(listeIndiceLettre,plateau,direction,chevalet,position);
+		        	
+		        	int nbLettreUtilise = listeIndiceLettre.size();
+		        	
+		        	for (int i = 0 ; i < nbLettreUtilise; i++) {
+		        		Jeton jeton = null;
+		        		try {
+							jeton = sacJeton.piocherJeton();
+						} catch (SacVideException e) {
+							Console.message("le sac de jeton est vide");
+						}
+		        		chevalet.ajouter(jeton);
+		        	}
+		        	finDuTour = true;
 		        }
-		        input.close();
-	        	
-	        	
-	        	Position position = null;
-	        	Scanner ligneInput = new Scanner(System.in);
-		        System.out.println("Entrer la ligne sur laquelle vous souhaitez poser votre jeton: ");
-		        Integer ligne = ligneInput.nextInt();
-		        position.setLigne(ligne);
-		        input.close();
-		        Scanner colonneInput = new Scanner(System.in);
-		        System.out.println("Entrer la colonne sur laquelle vous souhaitez poser votre jeton: ");
-		        Integer colonne = colonneInput.nextInt();
-		        position.setColonne(colonne);
-		        input.close();
+		        if(indice == 2) {
+		        	try {
+		        		echanger(sacJeton, chevalet);
+		        		finDuTour = true;
+		        	}catch (SacVideException e) {
+		        		Console.message("le sac de jeton est vide");
+		        	}
+		        	
+		        }
+		        else if(indice == 3) {
+		        	finDuTour = true;
+		        }
+		        else {
+		        	System.out.println("Le choix n'est pas disponible");
+		        }
 		        
-	        	placerUnMot(listeIndiceLettre,plateau,direction,chevalet,position);
-	        }
-	        if(indice == 2) {
-	        	try {
-	        		echanger(sacJeton, chevalet);
-	        	}catch (SacVideException e) {
-	        		//TODO
-	        	}
-	        	
-	        }
-	        else if(indice == 3) {
-	        	//quitter() TODO;
-	        }
-	        else {
-	        	System.out.println("Le choix n'est pas disponible");
 	        }
 	        
-	        if(!chevalet.estVide()) {
-	        	try {
-	        		remplirChevalet(sacJeton, chevalet);
-	        	}catch (SacVideException e) {
-	        		//TODO
-	        	}
-	        }
 	        System.out.print("Votre score est : " + joueur.getScore().toString());
 		}catch (IllegalArgumentException e) {
         	System.out.println("Le choix que vous avez choisie est invalide");
@@ -269,57 +282,11 @@ public class Jouer {
 	
 	public static void main(String[]arg) {
 		
-		SacJeton sacJeton = new SacJeton();
 		Plateau plateau = new Plateau();
+		SacJeton sacJeton = new SacJeton();
 		Chevalet chevalet = new Chevalet();
-		Direction direction = Direction.BAS;
-		Integer positionX;
-		Integer positionY;
-		Position position = new Position(1,1);
-		
-		ArrayList<Integer> indiceJetonAJouer;
-		indiceJetonAJouer = new ArrayList<>();
-		
-		sacJeton.mettreDesJetonDansMonSac();
-		sacJeton.melangerSac();
-		
-		try {
-			remplirChevalet(sacJeton,chevalet);
-		} catch (SacVideException e) {
-			Console.message("le sac est vide");
-		}	
-		
-		chevalet.afficher();
-		Console.message("");
-		selectionnerDesLettres(indiceJetonAJouer);
-		System.out.println(indiceJetonAJouer);
-		
-		
-		if (demandeDirection() == 1) {
-			direction = Direction.BAS;
-		}
-		if (demandeDirection() == 2) {
-			direction = Direction.DROITE;
-		}
-		
-		
-		
-		try {
-			Scanner inputPositionLigne = new Scanner(System.in);
-			Scanner inputPositionColonne = new Scanner(System.in);
-			Console.message("veuillez entrer la position de la ligne sur laquel vous poserai votre premier jeton");
-			positionX = inputPositionLigne.nextInt();
-			Console.message("veuillez entrer la position de la colonne sur laquel vous poserai votre premier jeton");
-			positionY = inputPositionColonne.nextInt();
-			position = new Position(positionX,positionY);
-			}
-		catch (IllegalArgumentException e) {
-			Console.message("entrez un nombre de 1 a 15");
-		}
-		
-		placerUnMot(indiceJetonAJouer,plateau,direction,chevalet,position);
-		
-		plateau.afficher();
+		Joueur joueur1 = new Joueur();
+		tourDeJeu(sacJeton, chevalet, plateau, joueur1);
 	}
 
 	private static int demandeDirection() {
