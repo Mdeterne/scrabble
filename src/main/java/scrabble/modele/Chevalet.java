@@ -53,7 +53,7 @@ public class Chevalet {
 	}
 	
 	public Jeton selectionner(int indice) {
-		return jetons.get(indice-1);
+		return jetons.get(indice);
 	}
 	
 	public void nettoyer() {
@@ -61,6 +61,6 @@ public class Chevalet {
 	}
 	
 	public void enlever(int indice) {
-		jetons.remove(indice-1);
+		jetons.remove(indice);
 	}
 }
