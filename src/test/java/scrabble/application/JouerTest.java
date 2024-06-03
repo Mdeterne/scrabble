@@ -70,7 +70,6 @@ class JouerTest {
 
     @Test
     void doitPlacerUnMotVerticalement() {
-    	System.out.println("Verticalement");
         List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             indices.add(i);
@@ -89,7 +88,6 @@ class JouerTest {
 
         Position position = new Position(7, 7);
         Jouer.placerUnMot(indices, plateau, Direction.BAS, chevalet, position);
-        System.out.println("7,7 8,7 9,7");
         assertEquals(Lettre.A.getLettre(), plateau.cases[7][7].getJeton().getLettre());
         assertEquals(Lettre.B.getLettre(), plateau.cases[8][7].getJeton().getLettre());
         assertEquals(Lettre.C.getLettre(), plateau.cases[9][7].getJeton().getLettre());
@@ -97,7 +95,6 @@ class JouerTest {
 
     @Test
     void doitPlacerUnMotHorizontalement() {
-    	System.out.println("Horizontalement");
         List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             indices.add(i);
@@ -106,7 +103,7 @@ class JouerTest {
         try {
             Jouer.remplirChevalet(sacJeton, chevalet);
         } catch (SacVideException e) {
-            e.printStackTrace();
+            Console.message("Erreur: le sac est vide");
         }
 
         chevalet.nettoyer();
@@ -116,7 +113,6 @@ class JouerTest {
 
         Position position = new Position(7, 7);
         Jouer.placerUnMot(indices, plateau, Direction.DROITE, chevalet, position);
-        System.out.println("7,7 7,8 7,9");
         assertEquals(Lettre.A.getLettre(), plateau.cases[7][7].getJeton().getLettre());
         assertEquals(Lettre.B.getLettre(), plateau.cases[7][8].getJeton().getLettre());
         assertEquals(Lettre.C.getLettre(), plateau.cases[7][9].getJeton().getLettre());
