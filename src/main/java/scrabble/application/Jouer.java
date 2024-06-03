@@ -2,7 +2,6 @@ package scrabble.application;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 import scrabble.gui.Console;
 import scrabble.modele.Chevalet;
@@ -19,18 +18,17 @@ import scrabble.utils.SacVideException;
 
 public class Jouer{
 	
-	public static void selectionnerDesLettres(ArrayList<Integer> positionJetonAJouer){
+	public void selectionnerDesLettres(ArrayList<Integer> positionJetonAJouer){
 		
 		try {
-			Scanner inputNBLettre = new Scanner(System.in);
 			Console.message("combien de lettres voulez vous utiliser :");
-			Integer nbLettre = inputNBLettre.nextInt();
+			Integer nbLettre = Console.entrerNombre();
 			if (nbLettre>0 && nbLettre<8) {
-				Scanner inputLettre = new Scanner(System.in);
+				
 				for (int i=0; i<nbLettre; i++) {
 					
 				    Console.message("Entrer l'indice de la lettre que vous souhaitez utiliser: ");
-				    Integer indice = inputLettre.nextInt();
+				    Integer indice = Console.entrerNombre();
 				    
 				    if(indice>0 && indice<8) {
 			        	positionJetonAJouer.add(indice-1);
@@ -39,19 +37,19 @@ public class Jouer{
 				    	Console.message("veuillez indiquer l'indice pas la lettre");
 				    }
 				}
-				inputLettre.close();
+				
 			}
 			else {
 				Console.message("vous avez selectionner un nombre incorect");
 			}
-			inputNBLettre.close();
+			
 		}
 		catch (IllegalArgumentException e){
 			Console.message("veuillez entrer un nombre");
 		}
 	}
 	
-	public static void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
+	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
 		String lettreJeton= jetonJoue.getLettre();
 		if(lettreJeton.equals(Lettre.JOKER.getLettre())) {
 			jetonJoue.attribuerJoker();
@@ -64,7 +62,7 @@ public class Jouer{
 		}
 	}
 
-	public static void placerUnMot(List<Integer> indiceJetonAJouer, Plateau plateau, Direction direction, Chevalet chevalet, Position position) {
+	public void placerUnMot(List<Integer> indiceJetonAJouer, Plateau plateau, Direction direction, Chevalet chevalet, Position position) {
 	    System.out.println("hello");
 	    if (plateau.caseEstVide(position).equals(true)) {
 	        System.out.println("caseestvide");
@@ -151,7 +149,7 @@ public class Jouer{
 
 
 
-	static void remplirChevalet(SacJeton sacJeton, Chevalet chevalet)
+	public void remplirChevalet(SacJeton sacJeton, Chevalet chevalet)
 			throws SacVideException {
 
 		if (sacJeton.estVide()) {
@@ -167,7 +165,7 @@ public class Jouer{
 		chevalet.ajouterUneListeJeton(transition);
 	}
 
-	private static void echanger(SacJeton sacJeton, Chevalet chevalet) throws SacVideException {
+	private void echanger(SacJeton sacJeton, Chevalet chevalet) throws SacVideException {
 		if (sacJeton.estVide()) {
 			throw new SacVideException("Le sac est vide impossible de piocher");
 		}
@@ -213,12 +211,11 @@ public class Jouer{
 	}
 
 	
-	public static void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
+	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
 		try {
-			Scanner input = new Scanner(System.in);
-	        System.out.println("Choisissez ce que vous souhaité faire durant ce tour: ");
-	        Integer indice = input.nextInt();
-	        input.close();
+	        System.out.println("Choisissez ce que vous souhaité faire durant ce tour:"
+	        		+ "1- Jouer  2- Echanger des Lettres  3- Quitter ");
+	        Integer indice = Console.entrerNombre();
 	        Boolean finDuTour = false;
 	        
 	        while (finDuTour == false) {
@@ -233,29 +230,35 @@ public class Jouer{
 		        	}
 		        	joueur.setScore(joueur.getScore()+score);
 		        	
-		        	Direction direction = null;
-		        	Scanner directionInput = new Scanner(System.in);
-			        System.out.println("Entrer la direction dans laquelle votre mot doit s'écrire: ");
-			        String ligneDirection = directionInput.nextLine();
-			        try {
-			        	direction = Direction.valueOf(ligneDirection.toUpperCase());
-			        }catch (IllegalArgumentException e) {
-			        	System.out.println("La direction saisie n'est pas valide");
+		        	Direction direction = Direction.BAS;
+		        	
+			        System.out.println("Entrer la direction dans laquelle votre mot doit s'écrire: 1- BAS  2- DROITE ");
+			        int ligneDirection = Console.entrerNombre();
+			        Boolean sorti = false;
+			        while(sorti==false) {
+			        	if (ligneDirection == 1) {
+			        		direction = Direction.BAS;
+			        		sorti = true;
+			        	}
+			        	if (ligneDirection == 2){
+			        		direction = Direction.DROITE;
+			        		sorti = true;
+			        	}
+			        	if (ligneDirection<1 || ligneDirection>2) {
+			        		Console.message("veuillez entrer un nombre entre 1 et 2");
+			        	}
 			        }
-			        input.close();
 		        	
 		        	
-		        	Position position = null;
-		        	Scanner ligneInput = new Scanner(System.in);
 			        System.out.println("Entrer la ligne sur laquelle vous souhaitez poser votre jeton: ");
-			        Integer ligne = ligneInput.nextInt();
-			        position.setLigne(ligne);
-			        input.close();
-			        Scanner colonneInput = new Scanner(System.in);
+			        Integer ligne = Console.entrerNombre();
+			        
+			        
 			        System.out.println("Entrer la colonne sur laquelle vous souhaitez poser votre jeton: ");
-			        Integer colonne = colonneInput.nextInt();
-			        position.setColonne(colonne);
-			        input.close();
+			        Integer colonne = Console.entrerNombre();
+			        
+			        
+			        Position position = new Position(ligne, colonne);
 			        
 		        	placerUnMot(listeIndiceLettre,plateau,direction,chevalet,position);
 		        	
@@ -302,42 +305,7 @@ public class Jouer{
 		SacJeton sacJeton = new SacJeton();
 		Chevalet chevalet = new Chevalet();
 		Joueur joueur1 = new Joueur();
-		tourDeJeu(sacJeton, chevalet, plateau, joueur1);
+		Jouer jouer = new Jouer();
+		jouer.tourDeJeu(sacJeton, chevalet, plateau, joueur1);
 	}
-
-	private static int demandeDirection() {
-		int sdirection = 1;
-		try {
-			do {
-				Scanner inputDirection = new Scanner(System.in);
-				Console.message("entrez la direction de votre mot BAS-1 DROITE-2");
-				sdirection = inputDirection.nextInt();
-				if (sdirection<1 || sdirection>2) {
-					Console.message("veuillez entrer 1 ou 2");
-				}
-				inputDirection.close();
-			}while(sdirection !=1 || sdirection !=2);
-			
-		}
-		
-		inputDirection.close();
-		try {
-			Scanner inputPositionLigne = new Scanner(System.in);
-			Scanner inputPositionColonne = new Scanner(System.in);
-			Console.message("veuillez entrer la position de la ligne sur laquel vous poserai votre premier jeton");
-			positionX = inputPositionLigne.nextInt();
-			Console.message("veuillez entrer la position de la colonne sur laquel vous poserai votre premier jeton");
-			positionY = inputPositionColonne.nextInt();
-			position = new Position(positionX,positionY);
-			inputPositionLigne.close();
-			inputPositionColonne.close();
-			}
-		catch (IllegalArgumentException e) {
-			Console.message("entrez un nombre de 1 a 15");
-		catch(IllegalArgumentException e) {
-			Console.message("entrer fausse");
-		}
-		return sdirection;
-	}
-
 }
