@@ -49,7 +49,7 @@ public class Jouer{
 		}
 	}
 	
-	public void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
+	public static void placerUnJeton(Jeton jetonJoue, Position position, Plateau plateau) {
 		String lettreJeton= jetonJoue.getLettre();
 		if(lettreJeton.equals(Lettre.JOKER.getLettre())) {
 			jetonJoue.attribuerJoker();
@@ -125,7 +125,7 @@ public class Jouer{
 
 
 
-	public void remplirChevalet(SacJeton sacJeton, Chevalet chevalet)
+	public static void remplirChevalet(SacJeton sacJeton, Chevalet chevalet)
 			throws SacVideException {
 
 		if (sacJeton.estVide()) {
@@ -189,12 +189,12 @@ public class Jouer{
 	
 	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
 		try {
-	        System.out.println("Choisissez ce que vous souhaité faire durant ce tour:"
+			Console.message("Choisissez ce que vous souhaité faire durant ce tour:"
 	        		+ "1- Jouer  2- Echanger des Lettres  3- Quitter ");
 	        Integer indice = Console.entrerNombre();
-	        Boolean finDuTour = false;
+	        boolean finDuTour = false;
 	        
-	        while (finDuTour == false) {
+	        while (!finDuTour) {
 	        	
 	        	if(indice == 1) {
 		        	ArrayList<Integer> listeIndiceLettre = new ArrayList<>();
@@ -208,10 +208,10 @@ public class Jouer{
 		        	
 		        	Direction direction = Direction.BAS;
 		        	
-			        System.out.println("Entrer la direction dans laquelle votre mot doit s'écrire: 1- BAS  2- DROITE ");
+		        	Console.message("Entrer la direction dans laquelle votre mot doit s'écrire: 1- BAS  2- DROITE ");
 			        int ligneDirection = Console.entrerNombre();
 			        Boolean sorti = false;
-			        while(sorti==false) {
+			        while(Boolean.FALSE.equals(sorti)) {
 			        	if (ligneDirection == 1) {
 			        		direction = Direction.BAS;
 			        		sorti = true;
@@ -226,11 +226,11 @@ public class Jouer{
 			        }
 		        	
 		        	
-			        System.out.println("Entrer la ligne sur laquelle vous souhaitez poser votre jeton: ");
+			        Console.message("Entrer la ligne sur laquelle vous souhaitez poser votre jeton: ");
 			        Integer ligne = Console.entrerNombre();
 			        
 			        
-			        System.out.println("Entrer la colonne sur laquelle vous souhaitez poser votre jeton: ");
+			        Console.message("Entrer la colonne sur laquelle vous souhaitez poser votre jeton: ");
 			        Integer colonne = Console.entrerNombre();
 			        
 			        
@@ -264,14 +264,14 @@ public class Jouer{
 		        	finDuTour = true;
 		        }
 		        else {
-		        	System.out.println("Le choix n'est pas disponible");
+		        	Console.message("Le choix n'est pas disponible");
 		        }
 		        
 	        }
 	        
-	        System.out.print("Votre score est : " + joueur.getScore().toString());
+	        Console.message("Votre score est : " + joueur.getScore().toString());
 		}catch (IllegalArgumentException e) {
-        	System.out.println("Le choix que vous avez choisie est invalide");
+			Console.message("Le choix que vous avez choisie est invalide");
         }
 	}
 	

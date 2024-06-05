@@ -2,6 +2,8 @@ package scrabble.modele;
 
 import java.util.Scanner;
 
+import scrabble.gui.Console;
+
 public class Jeton {
     private String lettre;
     private int points;
@@ -33,14 +35,14 @@ public class Jeton {
      
 	public void attribuerJoker() {
     	Scanner input = new Scanner(System.in);
-        System.out.println("Entrer la lettre que vous souhaitez utiliser: ");
+        Console.message("Entrer la lettre que vous souhaitez utiliser: ");
         String maLettre = input.nextLine();
         input.close();
         try {
         	Lettre lettreRemplacement=Lettre.valueOf(maLettre.toUpperCase());
         	this.lettre= lettreRemplacement.getLettre();
         }catch (IllegalArgumentException e) {
-        	System.out.println("La lettre saisie n'est pas valide");
+        	Console.message("La lettre saisie n'est pas valide");
         }
     	
     }
