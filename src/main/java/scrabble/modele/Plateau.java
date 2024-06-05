@@ -90,18 +90,18 @@ public class Plateau {
 		}
 		else {
 			for (int i = 0 ; i < Constantes.LIGNE ; i++ ) {
-				System.out.println(" ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  —— ");
+				Console.message(" ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  —— ");
 				for (int j = 0 ; j < Constantes.COLONNE ; j++) {
-					if (cases[i][j].getPresenceJeton() == true) {
-						System.out.print("|" + cases[i][j].getAffichageLettre() + " " + "|");
+					if (Boolean.TRUE.equals(cases[i][j].getPresenceJeton())) {
+						Console.message("|" + cases[i][j].getAffichageLettre() + " " + "|");
 					}
 					else {
-						System.out.print("|" + cases[i][j].getSpecialite().getSpecialite() + "|");
+						Console.message("|" + cases[i][j].getSpecialite().getSpecialite() + "|");
 					}
 				}
-				System.out.print("\n");
+				Console.message("\n");
 			}
-			System.out.println(" ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  —— ");
+			Console.message(" ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  ——  —— ");
 		}
 	}
 	
