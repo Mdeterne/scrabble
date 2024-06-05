@@ -1,11 +1,13 @@
 package scrabble.ihm.controleur;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 public class AffichageControleur {
 	
@@ -56,4 +58,10 @@ public class AffichageControleur {
 	
 	@FXML
 	private ImageView caseChevalet7;
+	
+	@FXML
+    private void handleQuitButtonAction(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
 }
