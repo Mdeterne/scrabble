@@ -1,31 +1,24 @@
 package scrabble.ihm;
 
+import java.io.IOException;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Affichage extends Application{
 	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException {
 		
 		HBox chevalet1 = new HBox();
-		Button placerMotBtn = new Button("Placer un mot");
-		Button remplacerChevaletBtn = new Button("Remplacer le chevalet");
-		Button quitterBtn = new Button("Quitter");
 		GridPane plateau = new GridPane();
 		
-		BorderPane root = new BorderPane();
-		root.setCenter(plateau);
-		root.setBottom(chevalet1);
-		root.setBottom(placerMotBtn);
-		root.setBottom(remplacerChevaletBtn);
-		root.setBottom(quitterBtn);
-		//root.getChildren().addAll(chevalet1,plateau,placerMotBtn,remplacerChevaletBtn,quitterBtn);
+		Pane root = FXMLLoader.load(getClass().getResource("/FXML/AffichageView.fxml"));
 		
 		Scene scene = new Scene(root,1060,800);
 		
