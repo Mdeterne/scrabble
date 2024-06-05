@@ -18,7 +18,7 @@ import scrabble.utils.SacVideException;
 
 public class Jouer{
 	
-	public void selectionnerDesLettres(ArrayList<Integer> positionJetonAJouer){
+	public static void selectionnerDesLettres(ArrayList<Integer> positionJetonAJouer){
 		
 		try {
 			Console.message("combien de lettres voulez vous utiliser :");
@@ -141,7 +141,7 @@ public class Jouer{
 		chevalet.ajouterUneListeJeton(transition);
 	}
 
-	private void echanger(SacJeton sacJeton, Chevalet chevalet) throws SacVideException {
+	private static void echanger(SacJeton sacJeton, Chevalet chevalet) throws SacVideException {
 		if (sacJeton.estVide()) {
 			throw new SacVideException("Le sac est vide impossible de piocher");
 		}
@@ -187,7 +187,7 @@ public class Jouer{
 	}
 
 	
-	public void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
+	public static void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
 		try {
 			Console.message("Choisissez ce que vous souhaité faire durant ce tour:"
 	        		+ "1- Jouer  2- Echanger des Lettres  3- Quitter ");
@@ -281,7 +281,6 @@ public class Jouer{
 		SacJeton sacJeton = new SacJeton();
 		Chevalet chevalet = new Chevalet();
 		Joueur joueur1 = new Joueur();
-		Jouer jouer = new Jouer();
-		jouer.tourDeJeu(sacJeton, chevalet, plateau, joueur1);
+		Jouer.tourDeJeu(sacJeton, chevalet, plateau, joueur1);
 	}
 }

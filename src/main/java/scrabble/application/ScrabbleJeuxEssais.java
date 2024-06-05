@@ -33,7 +33,7 @@ public class ScrabbleJeuxEssais {
 		List<Integer> indicesJetonsAJouer = new ArrayList<>();
 		indicesJetonsAJouer.add(1);
 		indicesJetonsAJouer.add(5);
-		//jouer.placerUnJeton(jeton, positionT, plateau);
+		Jouer.placerUnJeton(jeton, positionT, plateau);
 		Jouer.placerUnMot(indicesJetonsAJouer, plateau, Direction.BAS, chevaletMot, positionT);
 		Console.message("");
 		plateau.afficher();
@@ -50,7 +50,7 @@ public class ScrabbleJeuxEssais {
 		Console.message("test");
 		chevalet.afficher();
 		try {
-			remplirChevalet(Constantes.NBPLACECHEVALET,sacJeton,chevalet);
+			remplirChevalet(sacJeton,chevalet);
 		} catch (SacVideException e) {
 			Console.message("le sac est vide");
 		}	
@@ -76,13 +76,12 @@ public class ScrabbleJeuxEssais {
 		} catch (SacVideException e) {
 			Console.message("Impossible de piocher le sac est vide");
 		}
-		Position position = new Position(7,7);
 		chevalet.afficher();
 		chevalet.enlever(2);
 		chevalet.afficher();
 	}
 	
-	private static void remplirChevalet(int nbJetonAEchanger, SacJeton sacJeton, Chevalet chevalet) throws SacVideException {
+	private static void remplirChevalet(SacJeton sacJeton, Chevalet chevalet) throws SacVideException {
 		if (sacJeton.estVide()) {
 			throw new SacVideException("Le sac est vide impossible de piocher");
 		}

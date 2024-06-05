@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import scrabble.gui.Console;
 
 public class Affichage extends Application {
 	
@@ -20,10 +21,10 @@ public class Affichage extends Application {
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.out.println("Failed to load FXML file: " + e.getMessage());
+			Console.message("Failed to load FXML file: " + e.getMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("An unexpected error occurred: " + e.getMessage());
+			Console.message("An unexpected error occurred: " + e.getMessage());
 		}
 	}
 	
