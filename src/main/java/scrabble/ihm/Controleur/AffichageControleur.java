@@ -1,4 +1,4 @@
-package scrabble.ihm.Controleur;
+package scrabble.ihm.controleur;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
