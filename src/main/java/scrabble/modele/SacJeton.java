@@ -3,6 +3,9 @@ package scrabble.modele;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import scrabble.gui.Console;
 import scrabble.utils.SacVideException;
 
@@ -15,48 +18,50 @@ public class SacJeton {
     }
 	
 	public void mettreDesJetonDansMonSac() {
+		Image image = new Image("/scrabble/modele/jeton.png");
+		ImageView imageVue = new ImageView(image);
 		for (int i = 0; i < 15; i++) {
-				jetons.add(new Jeton(Lettre.E, Points.UN));
+				jetons.add(new Jeton(Lettre.E, Points.UN, imageVue));
 		}
 		for (int i = 0; i < 9; i++) {
-			jetons.add(new Jeton(Lettre.A, Points.UN));
+			jetons.add(new Jeton(Lettre.A, Points.UN, imageVue));
 		}
 		for (int i = 0; i < 8; i++) {
-			jetons.add(new Jeton(Lettre.I, Points.UN));
+			jetons.add(new Jeton(Lettre.I, Points.UN, imageVue));
 		}
 		for (int i = 0; i < 6; i++) {
-			jetons.add(new Jeton(Lettre.N, Points.UN));
-			jetons.add(new Jeton(Lettre.O, Points.UN));
-			jetons.add(new Jeton(Lettre.R, Points.UN));
-			jetons.add(new Jeton(Lettre.S, Points.UN));
-			jetons.add(new Jeton(Lettre.T, Points.UN));
-			jetons.add(new Jeton(Lettre.U, Points.UN));
+			jetons.add(new Jeton(Lettre.N, Points.UN, imageVue));
+			jetons.add(new Jeton(Lettre.O, Points.UN, imageVue));
+			jetons.add(new Jeton(Lettre.R, Points.UN, imageVue));
+			jetons.add(new Jeton(Lettre.S, Points.UN, imageVue));
+			jetons.add(new Jeton(Lettre.T, Points.UN, imageVue));
+			jetons.add(new Jeton(Lettre.U, Points.UN, imageVue));
 		}
 		for (int i = 0; i < 5; i++) {
-			jetons.add(new Jeton(Lettre.L, Points.UN));
+			jetons.add(new Jeton(Lettre.L, Points.UN, imageVue));
 		}
 		for (int i = 0; i < 3; i++) {
-			jetons.add(new Jeton(Lettre.D, Points.DEUX));
-			jetons.add(new Jeton(Lettre.M, Points.DEUX));
+			jetons.add(new Jeton(Lettre.D, Points.DEUX, imageVue));
+			jetons.add(new Jeton(Lettre.M, Points.DEUX, imageVue));
 		}
 		for (int i = 0; i < 2; i++) {
-			jetons.add(new Jeton(Lettre.G, Points.DEUX));
-			jetons.add(new Jeton(Lettre.C, Points.TROIS));
-			jetons.add(new Jeton(Lettre.B, Points.TROIS));
-			jetons.add(new Jeton(Lettre.P, Points.TROIS));
-			jetons.add(new Jeton(Lettre.F, Points.QUATRE));
-			jetons.add(new Jeton(Lettre.H, Points.QUATRE));
-			jetons.add(new Jeton(Lettre.V, Points.QUATRE));
-			jetons.add(new Jeton(Lettre.JOKER, Points.ZERO));
+			jetons.add(new Jeton(Lettre.G, Points.DEUX, imageVue));
+			jetons.add(new Jeton(Lettre.C, Points.TROIS, imageVue));
+			jetons.add(new Jeton(Lettre.B, Points.TROIS, imageVue));
+			jetons.add(new Jeton(Lettre.P, Points.TROIS, imageVue));
+			jetons.add(new Jeton(Lettre.F, Points.QUATRE, imageVue));
+			jetons.add(new Jeton(Lettre.H, Points.QUATRE, imageVue));
+			jetons.add(new Jeton(Lettre.V, Points.QUATRE, imageVue));
+			jetons.add(new Jeton(Lettre.JOKER, Points.ZERO, imageVue));
 		}
 		for (int i = 0; i < 1; i++) {
-			jetons.add(new Jeton(Lettre.J, Points.HUIT));
-			jetons.add(new Jeton(Lettre.Q, Points.HUIT));
-			jetons.add(new Jeton(Lettre.K, Points.DIX));
-			jetons.add(new Jeton(Lettre.W, Points.DIX));
-			jetons.add(new Jeton(Lettre.X, Points.DIX));
-			jetons.add(new Jeton(Lettre.Y, Points.DIX));
-			jetons.add(new Jeton(Lettre.Z, Points.DIX));
+			jetons.add(new Jeton(Lettre.J, Points.HUIT, imageVue));
+			jetons.add(new Jeton(Lettre.Q, Points.HUIT, imageVue));
+			jetons.add(new Jeton(Lettre.K, Points.DIX, imageVue));
+			jetons.add(new Jeton(Lettre.W, Points.DIX, imageVue));
+			jetons.add(new Jeton(Lettre.X, Points.DIX, imageVue));
+			jetons.add(new Jeton(Lettre.Y, Points.DIX, imageVue));
+			jetons.add(new Jeton(Lettre.Z, Points.DIX, imageVue));
 		}
 	}
 	

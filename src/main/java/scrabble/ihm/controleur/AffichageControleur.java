@@ -1,5 +1,6 @@
 package scrabble.ihm.controleur;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,7 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import scrabble.modele.Chevalet;
+import scrabble.modele.Jeton;
+import scrabble.modele.SacJeton;
+import scrabble.utils.SacVideException;
 
 public class AffichageControleur {
 	
@@ -24,7 +31,7 @@ public class AffichageControleur {
 	private Button remplacerChevaletbtn;
 	
 	@FXML
-	private HBox chevalet;
+	private HBox chevaletHbox;
 	
 	@FXML
 	private HBox emplacementBoutton;
@@ -38,30 +45,40 @@ public class AffichageControleur {
 	@FXML
 	private GridPane caseChevalet;
 	
-	@FXML
-	private ImageView caseChevalet1;
-	
-	@FXML
-	private ImageView caseChevalet2;
-	
-	@FXML
-	private ImageView caseChevalet3;
-	
-	@FXML
-	private ImageView caseChevalet4;
-	
-	@FXML
-	private ImageView caseChevalet5;
-	
-	@FXML
-	private ImageView caseChevalet6;
-	
-	@FXML
-	private ImageView caseChevalet7;
+	private SacJeton sacDeJetons;
+    private Chevalet chevalet;
 	
 	@FXML
     private void handleQuitButtonAction(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+	
+	@FXML
+    public void initialize() {
+        sacDeJetons = new SacJeton();
+        chevalet = new Chevalet();
+        sacDeJetons.mettreDesJetonDansMonSac();
+        remplirChevaletAvecAnimation();
+    }
+
+	private void remplirChevaletAvecAnimation() {
+        try {
+            for (int i = 0; i < 7; i++) {
+                Jeton jeton = sacDeJetons.piocherJeton();
+                chevalet.ajouter(jeton);
+                animationDeplacementJeton(jeton);
+            }
+        } catch (SacVideException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void animationDeplacementJeton(Jeton jeton) {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), jeton.getImageView());
+        transition.setToX(chevaletHbox.getLayoutX()); // Position X du chevalet
+        transition.setToY(chevaletHbox.getLayoutY()); // Position Y du chevalet
+        transition.play();
+    }
+	
 }
