@@ -18,50 +18,48 @@ public class SacJeton {
     }
 	
 	public void mettreDesJetonDansMonSac() {
-		Image image = new Image("/scrabble/modele/jeton.png");
-		ImageView imageVue = new ImageView(image);
 		for (int i = 0; i < 15; i++) {
-				jetons.add(new Jeton(Lettre.E, Points.UN, imageVue));
+				jetons.add(new Jeton(Lettre.E, Points.UN, new ImageView("/scrabble/medias/jetonE.png")));
 		}
 		for (int i = 0; i < 9; i++) {
-			jetons.add(new Jeton(Lettre.A, Points.UN, imageVue));
+			jetons.add(new Jeton(Lettre.A, Points.UN, new ImageView("/scrabble/medias/jetonA.png")));
 		}
 		for (int i = 0; i < 8; i++) {
-			jetons.add(new Jeton(Lettre.I, Points.UN, imageVue));
+			jetons.add(new Jeton(Lettre.I, Points.UN, new ImageView("/scrabble/medias/jetonI.png")));
 		}
 		for (int i = 0; i < 6; i++) {
-			jetons.add(new Jeton(Lettre.N, Points.UN, imageVue));
-			jetons.add(new Jeton(Lettre.O, Points.UN, imageVue));
-			jetons.add(new Jeton(Lettre.R, Points.UN, imageVue));
-			jetons.add(new Jeton(Lettre.S, Points.UN, imageVue));
-			jetons.add(new Jeton(Lettre.T, Points.UN, imageVue));
-			jetons.add(new Jeton(Lettre.U, Points.UN, imageVue));
+			jetons.add(new Jeton(Lettre.N, Points.UN, new ImageView("/scrabble/medias/jetonN.png")));
+			jetons.add(new Jeton(Lettre.O, Points.UN, new ImageView("/scrabble/medias/jetonO.png")));
+			jetons.add(new Jeton(Lettre.R, Points.UN, new ImageView("/scrabble/medias/jetonR.png")));
+			jetons.add(new Jeton(Lettre.S, Points.UN, new ImageView("/scrabble/medias/jetonS.png")));
+			jetons.add(new Jeton(Lettre.T, Points.UN, new ImageView("/scrabble/medias/jetonT.png")));
+			jetons.add(new Jeton(Lettre.U, Points.UN, new ImageView("/scrabble/medias/jetonU.png")));
 		}
 		for (int i = 0; i < 5; i++) {
-			jetons.add(new Jeton(Lettre.L, Points.UN, imageVue));
+			jetons.add(new Jeton(Lettre.L, Points.UN, new ImageView("/scrabble/medias/jetonL.png")));
 		}
 		for (int i = 0; i < 3; i++) {
-			jetons.add(new Jeton(Lettre.D, Points.DEUX, imageVue));
-			jetons.add(new Jeton(Lettre.M, Points.DEUX, imageVue));
+			jetons.add(new Jeton(Lettre.D, Points.DEUX, new ImageView("/scrabble/medias/jetonD.png")));
+			jetons.add(new Jeton(Lettre.M, Points.DEUX, new ImageView("/scrabble/medias/jetonM.png")));
 		}
 		for (int i = 0; i < 2; i++) {
-			jetons.add(new Jeton(Lettre.G, Points.DEUX, imageVue));
-			jetons.add(new Jeton(Lettre.C, Points.TROIS, imageVue));
-			jetons.add(new Jeton(Lettre.B, Points.TROIS, imageVue));
-			jetons.add(new Jeton(Lettre.P, Points.TROIS, imageVue));
-			jetons.add(new Jeton(Lettre.F, Points.QUATRE, imageVue));
-			jetons.add(new Jeton(Lettre.H, Points.QUATRE, imageVue));
-			jetons.add(new Jeton(Lettre.V, Points.QUATRE, imageVue));
-			jetons.add(new Jeton(Lettre.JOKER, Points.ZERO, imageVue));
+			jetons.add(new Jeton(Lettre.G, Points.DEUX, new ImageView("/scrabble/medias/jetonG.png")));
+			jetons.add(new Jeton(Lettre.C, Points.TROIS, new ImageView("/scrabble/medias/jetonC.png")));
+			jetons.add(new Jeton(Lettre.B, Points.TROIS, new ImageView("/scrabble/medias/jetonB.png")));
+			jetons.add(new Jeton(Lettre.P, Points.TROIS, new ImageView("/scrabble/medias/jetonP.png")));
+			jetons.add(new Jeton(Lettre.F, Points.QUATRE, new ImageView("/scrabble/medias/jetonF.png")));
+			jetons.add(new Jeton(Lettre.H, Points.QUATRE, new ImageView("/scrabble/medias/jetonH.png")));
+			jetons.add(new Jeton(Lettre.V, Points.QUATRE, new ImageView("/scrabble/medias/jetonV.png")));
+			jetons.add(new Jeton(Lettre.JOKER, Points.ZERO, new ImageView("/scrabble/medias/jeton.png")));
 		}
 		for (int i = 0; i < 1; i++) {
-			jetons.add(new Jeton(Lettre.J, Points.HUIT, imageVue));
-			jetons.add(new Jeton(Lettre.Q, Points.HUIT, imageVue));
-			jetons.add(new Jeton(Lettre.K, Points.DIX, imageVue));
-			jetons.add(new Jeton(Lettre.W, Points.DIX, imageVue));
-			jetons.add(new Jeton(Lettre.X, Points.DIX, imageVue));
-			jetons.add(new Jeton(Lettre.Y, Points.DIX, imageVue));
-			jetons.add(new Jeton(Lettre.Z, Points.DIX, imageVue));
+			jetons.add(new Jeton(Lettre.J, Points.HUIT, new ImageView("/scrabble/medias/jetonJ.png")));
+			jetons.add(new Jeton(Lettre.Q, Points.HUIT, new ImageView("/scrabble/medias/jetonQ.png")));
+			jetons.add(new Jeton(Lettre.K, Points.DIX, new ImageView("/scrabble/medias/jetonK.png")));
+			jetons.add(new Jeton(Lettre.W, Points.DIX, new ImageView("/scrabble/medias/jetonW.png")));
+			jetons.add(new Jeton(Lettre.X, Points.DIX, new ImageView("/scrabble/medias/jetonX.png")));
+			jetons.add(new Jeton(Lettre.Y, Points.DIX, new ImageView("/scrabble/medias/jetonY.png")));
+			jetons.add(new Jeton(Lettre.Z, Points.DIX, new ImageView("/scrabble/medias/jetonZ.png")));
 		}
 	}
 	

@@ -63,22 +63,24 @@ public class AffichageControleur {
     }
 
 	private void remplirChevaletAvecAnimation() {
-        try {
-            for (int i = 0; i < 7; i++) {
-                Jeton jeton = sacDeJetons.piocherJeton();
-                chevalet.ajouter(jeton);
-                animationDeplacementJeton(jeton);
-            }
-        } catch (SacVideException e) {
-            e.printStackTrace();
-        }
-    }
+	    try {
+	        for (int i = 0; i < 7; i++) {
+	            Jeton jeton = sacDeJetons.piocherJeton();
+	            chevalet.ajouter(jeton);
+	            ImageView imageView = jeton.getImageView();
+	            chevaletHbox.getChildren().add(imageView);
+	            animationDeplacementJeton(imageView);
+	        }
+	    } catch (SacVideException e) {
+	        e.printStackTrace();
+	    }
+	}
 
-    private void animationDeplacementJeton(Jeton jeton) {
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), jeton.getImageView());
-        transition.setToX(chevaletHbox.getLayoutX()); // Position X du chevalet
-        transition.setToY(chevaletHbox.getLayoutY()); // Position Y du chevalet
-        transition.play();
-    }
+	private void animationDeplacementJeton(ImageView imageView) {
+	    TranslateTransition transition = new TranslateTransition(Duration.seconds(1), imageView);
+	    transition.setToX(chevaletHbox.getLayoutX());
+	    transition.setToY(chevaletHbox.getLayoutY());
+	    transition.play();
+	}
 	
 }

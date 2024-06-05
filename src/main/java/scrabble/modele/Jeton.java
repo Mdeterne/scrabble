@@ -51,5 +51,9 @@ public class Jeton {
 	public ImageView getImageView() {
 	    return this.imageVue;
 	}
+	
+	public void setImageView(ImageView imageVue) {
+        this.imageVue = imageVue;
+    }
    
 }
