@@ -1,16 +1,18 @@
 package scrabble.modele;
 
 import java.util.Scanner;
-
+import javafx.scene.image.ImageView;
 import scrabble.gui.Console;
 
 public class Jeton {
     private String lettre;
     private int points;
+    private ImageView imageVue;
 
-    public Jeton(Lettre lettre, Points points){
+    public Jeton(Lettre lettre, Points points, ImageView imageVue){
     	this.lettre=lettre.getLettre();
     	this.points= points.getValeur();
+    	this.imageVue = imageVue;
     }
     
     public String getLettre() {
@@ -43,8 +45,11 @@ public class Jeton {
         	this.lettre= lettreRemplacement.getLettre();
         }catch (IllegalArgumentException e) {
         	Console.message("La lettre saisie n'est pas valide");
-        }
-    	
+        } 
     }
+	
+	public ImageView getImageView() {
+	    return this.imageVue;
+	}
    
 }
