@@ -15,11 +15,7 @@ public class Affichage extends Application{
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		
-		HBox chevalet1 = new HBox();
-		GridPane plateau = new GridPane();
-		
-		Pane root = FXMLLoader.load(getClass().getResource("/FXML/AffichageView.fxml"));
-		
+		Pane root = FXMLLoader.load(getClass().getResource("/vue/AffichageVue.fxml"));
 		Scene scene = new Scene(root,1060,800);
 		
 		primaryStage.setTitle("Scrabble");
