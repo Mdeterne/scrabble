@@ -4,7 +4,7 @@ public class Joueur {
 
 	String nom;
 	Chevalet monChevalet;
-	int score;
+	Integer score;
 	
 	public Joueur(String nom, Chevalet chevalet) {
 		this.nom = nom;
@@ -16,11 +16,11 @@ public class Joueur {
 		return nom;
 	}
 	
-	public int getScore() {
+	public Integer getScore() {
 		return score;
 	}
 	
-	public void setScore(int score) {
+	public void setScore(Integer score) {
 		this.score = score;
 	}
 	

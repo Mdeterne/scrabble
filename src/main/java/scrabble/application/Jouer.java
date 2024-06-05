@@ -18,7 +18,7 @@ import scrabble.utils.SacVideException;
 
 public class Jouer{
 	
-	public static void selectionnerDesLettres(ArrayList<Integer> positionJetonAJouer){
+	public static void selectionnerDesLettres(List<Integer> positionJetonAJouer){
 		
 		try {
 			Console.message("combien de lettres voulez vous utiliser :");
@@ -189,7 +189,7 @@ public class Jouer{
 	
 	public static void tourDeJeu(SacJeton sacJeton,Chevalet chevalet,Plateau plateau, Joueur joueur){
 		try {
-			Console.message("Choisissez ce que vous souhaité faire durant ce tour:"
+			Console.message("Choisissez ce que vous souhaitez faire durant ce tour:"
 	        		+ "1- Jouer  2- Echanger des Lettres  3- Quitter ");
 	        Integer indice = Console.entrerNombre();
 	        boolean finDuTour = false;
@@ -280,7 +280,7 @@ public class Jouer{
 		Plateau plateau = new Plateau();
 		SacJeton sacJeton = new SacJeton();
 		Chevalet chevalet = new Chevalet();
-		Joueur joueur1 = new Joueur();
+		Joueur joueur1 = new Joueur("joueur1", chevalet);
 		Jouer.tourDeJeu(sacJeton, chevalet, plateau, joueur1);
 	}
 }
