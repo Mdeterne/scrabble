@@ -1,5 +1,7 @@
 package scrabble.ihm.controleur;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,34 +55,5 @@ public class AffichageControleur {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-	
-	@FXML
-    public void initialize() {
-        sacDeJetons = new SacJeton();
-        chevalet = new Chevalet();
-        sacDeJetons.mettreDesJetonDansMonSac();
-        remplirChevaletAvecAnimation();
-    }
-
-	private void remplirChevaletAvecAnimation() {
-	    try {
-	        for (int i = 0; i < 7; i++) {
-	            Jeton jeton = sacDeJetons.piocherJeton();
-	            chevalet.ajouter(jeton);
-	            ImageView imageView = jeton.getImageView();
-	            chevaletHbox.getChildren().add(imageView);
-	            animationDeplacementJeton(imageView);
-	        }
-	    } catch (SacVideException e) {
-	        e.printStackTrace();
-	    }
-	}
-
-	private void animationDeplacementJeton(ImageView imageView) {
-	    TranslateTransition transition = new TranslateTransition(Duration.seconds(1), imageView);
-	    transition.setToX(chevaletHbox.getLayoutX());
-	    transition.setToY(chevaletHbox.getLayoutY());
-	    transition.play();
-	}
 	
 }
